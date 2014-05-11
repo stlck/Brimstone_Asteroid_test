@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 212: {fileID: 21200000}
   - 50: {fileID: 5000000}
+  - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -57,6 +58,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: b741b5d76d7a7d34ea4c1aa07f8f24dd, type: 3}
   Bullet: {fileID: 400000, guid: aa9306e19de1e5f4ba4076407bd6da13, type: 2}
+--- !u!148 &14800000
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 400000}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

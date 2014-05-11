@@ -189,6 +189,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 513217341}
+  - 148: {fileID: 513217343}
+  - 114: {fileID: 513217342}
   - 114: {fileID: 513217340}
   m_Layer: 0
   m_Name: Manager
@@ -206,10 +208,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 513217339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869c7f88de6837f42ae967b5d2e7af04, type: 3}
+  m_Script: {fileID: 11500000, guid: e37e0de1671b22a4c893a60355be1253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerShipPrefab: {fileID: 400000, guid: 28169b6c51b21dc4b953c5c4c0c447a1, type: 2}
+  PlayerShip: {fileID: 400000, guid: 28169b6c51b21dc4b953c5c4c0c447a1, type: 2}
+  GameTypeName: BAsteroidsTest
 --- !u!4 &513217341
 Transform:
   m_ObjectHideFlags: 0
@@ -221,6 +224,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &513217342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: cb6bbebf3e443a94dba529ab1b60bdfb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1443891101}
+  m_GameObject: {fileID: 513217339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694a76a576c462046b738b2e4bd71034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 513217340}
+--- !u!148 &513217343
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14800000, guid: cb6bbebf3e443a94dba529ab1b60bdfb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1443891101}
+  m_GameObject: {fileID: 513217339}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 513217341}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
 --- !u!1 &542587945
 GameObject:
   m_ObjectHideFlags: 0
