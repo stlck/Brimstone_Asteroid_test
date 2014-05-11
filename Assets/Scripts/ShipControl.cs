@@ -8,8 +8,8 @@ public class ShipControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		var sr = gameObject.AddComponent<SpriteRenderer> ();
-		sr.sprite = this.Sprite;
+        //var sr = gameObject.AddComponent<SpriteRenderer> ();
+        //sr.sprite = this.Sprite;
 	}
 	
 	// Update is called once per frame

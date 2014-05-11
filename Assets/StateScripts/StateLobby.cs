@@ -19,17 +19,28 @@ public class StateLobby : GameState {
 
 	public override void OnGUIState ()
 	{
-		GUILayout.Label ("Lobby"); 
-		GUILayout.BeginHorizontal ();
-		foreach (var s in ships) {
-			if(GUILayout.Button(s.texture, GUILayout.Width(120), GUILayout.Height(120)))
-			{
-				instantiateShip(s);
-				StateMachine.SetPlay();
-			}
-		}
-		GUILayout.EndHorizontal ();
+		GUILayout.Label ("Lobby");
+        if (GUILayout.Button("Start"))
+        {
+            instantiateShip();
+            StateMachine.SetPlay();
+        }
+        //GUILayout.BeginHorizontal ();
+        //foreach (var s in ships) {
+        //    if(GUILayout.Button(s.texture, GUILayout.Width(120), GUILayout.Height(120)))
+        //    {
+        //        instantiateShip(s);
+        //        StateMachine.SetPlay();
+        //    }
+        //}
+        //GUILayout.EndHorizontal ();
 	}
+
+    void instantiateShip()
+    {
+        var ship = GameObject.FindObjectOfType<GameStateManager>().PlayerShipPrefab;
+        Transform.Instantiate(ship);
+    }
 
 	void instantiateShip(Sprite s)
 	{
@@ -56,6 +67,7 @@ public class StateLobby : GameState {
 	{
 		Time.timeScale = 0;
 	}
+
 	public override void EndState ()
 	{
 		

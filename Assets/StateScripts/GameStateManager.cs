@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameStateManager : MonoBehaviour {
+
+    public Transform PlayerShipPrefab;
 
 	StateMachine State = StateMachine.Instance;
 
