@@ -49,7 +49,7 @@ public class AstroidControl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
-		if (collision.gameObject.tag == "Bullet") 
+		if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Player") 
 		{
             if (Network.peerType != NetworkPeerType.Disconnected)
             {

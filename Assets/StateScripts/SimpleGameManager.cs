@@ -32,10 +32,7 @@ public class SimpleGameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (lobbyState == LobbyState.Playing && Targets.All(m => m == null))
-        {
-            networkView.RPC("Victory", RPCMode.All);
-        }
+        
 	}
 
     void OnGUI()
@@ -62,9 +59,6 @@ public class SimpleGameManager : MonoBehaviour {
                 GUILayout.Label("Waiting");
                 break;
             case LobbyState.Playing:
-                break;
-            case LobbyState.WON:
-                GUILayout.Label("YOU WON THE GAME!!!!!!!!!!!!!!!!!!!");
                 break;
         }
 
