@@ -10,7 +10,7 @@ public class BulletControl : MonoBehaviour {
 	private float play_width = 8f;
 	private float play_height = 6.2f;
 	void Start () {
-		if(Network.peerType != NetworkPeerType.Server)
+		if(!networkView.viewID.isMine)
 			return;
 
 		lifespan = 75;
@@ -20,7 +20,7 @@ public class BulletControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Network.peerType != NetworkPeerType.Server)
+        if (!networkView.viewID.isMine)
 			return;
 		// live up to 'lifespan' only
 		lifespan_current++;

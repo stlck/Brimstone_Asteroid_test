@@ -7,11 +7,14 @@ public class ShipControl : MonoBehaviour {
 	public Transform Bullet;
 	private float play_width = 8f;
 	private float play_height = 6f;
+    SimpleGameManager manager;
 	
 	// Use this for initialization
 	void Start () {
 		//var sr = gameObject.AddComponent<SpriteRenderer> ();
 		//sr.sprite = this.Sprite;
+        manager = GameObject.FindObjectOfType<SimpleGameManager>();
+        
 	}
 	
 	// Update is called once per frame
@@ -39,7 +42,10 @@ public class ShipControl : MonoBehaviour {
 			transform.RotateAround ( Vector3.forward, hor * .2f);
 		
 		if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
-			var b = Network.Instantiate(Bullet, transform.position + transform.forward, transform.rotation, 2) as Transform;
+            if(!Network.isServer)
+                networkView.RPC("Shoot", RPCMode.Server);
+            else
+                Shoot();
 			//b.rigidbody2D.velocity = transform.forward *5;
 		}
 		
@@ -53,4 +59,10 @@ public class ShipControl : MonoBehaviour {
 		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
 		
 	}
+
+    [RPC]
+    public void Shoot()
+    {
+        Network.Instantiate(Bullet, transform.position + transform.forward, transform.rotation, 2);
+    }
 }
