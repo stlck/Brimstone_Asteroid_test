@@ -15,6 +15,7 @@ public class NetworkManager : MonoBehaviour {
         {
             MyProps = new PlayerProps();
             MyProps.Id = networkView.viewID;
+            MyProps.Name = "NamedPlayer";
         }
 
 	}

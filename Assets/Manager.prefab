@@ -41,8 +41,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroids:
-  - {fileID: 400000, guid: 0a6f896dd9c025544b6e1927554427d3, type: 2}
-  PlayerShip: {fileID: 400000, guid: 28169b6c51b21dc4b953c5c4c0c447a1, type: 2}
+  - {fileID: 400000, guid: 209cc250afafb084db613452c8418f99, type: 2}
+  PlayerShip: {fileID: 400006, guid: bce7b12728a720242b53b5bd579d7307, type: 2}
   GameTypeName: BAsteroidsTest
   lobbyState: 0
 --- !u!114 &11400002
