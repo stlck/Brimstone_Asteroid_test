@@ -6,12 +6,14 @@ public class GameStateManager : MonoBehaviour {
 
     public Transform PlayerShipPrefab;
 
-	StateMachine State = StateMachine.Instance;
+	public StateMachine State = StateMachine.Instance;
 
 	void Awake()
 	{
 
 	}
+
+
 
 	// Use this for initialization
 	void Start () {

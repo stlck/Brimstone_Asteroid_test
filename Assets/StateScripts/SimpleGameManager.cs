@@ -3,35 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class StateLobby : GameState {
-	
-	protected static StateLobby _instance = new StateLobby();
-	
-	public static StateLobby Instance
-	{
-		get
-		{
-			return _instance;
-		}
-	}
+public class SimpleGameManager : MonoBehaviour {
 
-    //public List<Sprite> ships = new List<Sprite>();
+    public Transform PlayerShip;
     public List<HostData> hostdata = new List<HostData>();
     public string GameTypeName = "BAsteroidsTest";
     enum LobbyState
     {
         lobby,
         Hosting,
-        Joined
+        Joined,
+        Playing
     }
     LobbyState lobbyState;
-    public GameStateManager Manager;
 
-	public override void OnGUIState ()
-	{
-		GUILayout.Label ("Lobby");
+	// Use this for initialization
+	void Start () {
+        //Manager = GameObject.FindObjectOfType<GameStateManager>();
+        MasterServer.ClearHostList();
+        MasterServer.RequestHostList(GameTypeName);
+        Time.timeScale = 0;
+        lobbyState = LobbyState.lobby;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
-        switch(lobbyState)
+    void OnGUI()
+    {
+        GUILayout.Label("Lobby");
+
+        switch (lobbyState)
         {
             case LobbyState.lobby:
                 if (GUILayout.Button("Refresh"))
@@ -46,17 +50,19 @@ public class StateLobby : GameState {
             case LobbyState.Hosting:
                 if (GUILayout.Button("Start"))
                 {
-                    StartGame(); 
+                    StartGame();
                 }
                 break;
             case LobbyState.Joined:
                 GUILayout.Label("Waiting");
                 break;
+            case LobbyState.Playing:
+                break;
         }
 
         if (GUILayout.Button("Quit"))
             Application.Quit();
-	}
+    }
 
     void showLobby()
     {
@@ -84,43 +90,6 @@ public class StateLobby : GameState {
         }
     }
 
-	void instantiateShip(Sprite s)
-	{
-		var go = new GameObject ();
-		var ship = go.AddComponent<ShipControl> ();
-		ship.name = "SHIP";
-		//ship.enabled = false;
-		ship.Sprite = s;
-
-		var rid = go.AddComponent<Rigidbody2D> ();
-		rid.gravityScale = 0;
-		rid.mass = 100;
-	}
-	
-	public override void UpdateState ()
-	{
-
-	}
-	
-	public override void StartState ()
-	{
-        Manager = GameObject.FindObjectOfType<GameStateManager>();
-        MasterServer.ClearHostList();
-        MasterServer.RequestHostList(GameTypeName);
-		Time.timeScale = 0;
-        lobbyState = LobbyState.lobby;
-	}
-
-	public override void EndState ()
-	{
-		
-	}
-
-	public override string ToString ()
-	{
-		return string.Format ("[StateLobby]");
-	}
-
     void RefreshLobby()
     {
         hostdata = MasterServer.PollHostList().ToList();
@@ -129,13 +98,27 @@ public class StateLobby : GameState {
     void StartGame()
     {
         MasterServer.UnregisterHost();
-        Manager.networkView.RPC("RPCStart", RPCMode.AllBuffered);
+        networkView.RPC("RPCStart", RPCMode.AllBuffered);
     }
 
     void HostGame()
     {
         Network.InitializeServer(32, 25002, !Network.HavePublicAddress());
         MasterServer.RegisterHost(GameTypeName, "Test1");
-        
+    }
+
+    [RPC]
+    void RPCStart()
+    {
+        InstantiateShip();
+        lobbyState = LobbyState.Playing;
+    }
+
+    public void InstantiateShip()
+    {
+        if (Network.peerType != NetworkPeerType.Disconnected)
+            Network.Instantiate(PlayerShip, Vector3.zero, Quaternion.identity, 0);
+        else
+            Transform.Instantiate(PlayerShip);
     }
 }
