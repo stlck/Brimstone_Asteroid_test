@@ -39,7 +39,7 @@ public class ShipControl : MonoBehaviour {
 			transform.RotateAround ( Vector3.forward, hor * .2f);
 		
 		if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
-			var b = Instantiate(Bullet, transform.position + transform.forward, transform.rotation) as Transform;
+			var b = Network.Instantiate(Bullet, transform.position + transform.forward, transform.rotation, 2) as Transform;
 			//b.rigidbody2D.velocity = transform.forward *5;
 		}
 		
