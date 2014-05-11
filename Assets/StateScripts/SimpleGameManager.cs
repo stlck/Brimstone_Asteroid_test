@@ -5,17 +5,18 @@ using System.Linq;
 
 public class SimpleGameManager : MonoBehaviour {
 
+    public List<Transform> Asteroids = new List<Transform>();
     public Transform PlayerShip;
     public List<HostData> hostdata = new List<HostData>();
     public string GameTypeName = "BAsteroidsTest";
-    enum LobbyState
+    public enum LobbyState
     {
         lobby,
         Hosting,
         Joined,
         Playing
     }
-    LobbyState lobbyState;
+    public LobbyState lobbyState;
 
 	// Use this for initialization
 	void Start () {
@@ -103,7 +104,7 @@ public class SimpleGameManager : MonoBehaviour {
 
     void HostGame()
     {
-        Network.InitializeServer(32, 7777, !Network.HavePublicAddress());
+        Network.InitializeServer(32, 8888, !Network.HavePublicAddress());
         MasterServer.RegisterHost(GameTypeName, "Test1");
     }
 
@@ -112,6 +113,13 @@ public class SimpleGameManager : MonoBehaviour {
     {
         InstantiateShip();
         lobbyState = LobbyState.Playing;
+        
+        if (Network.isServer)
+        {
+            Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1);
+            Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1);
+            Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1);
+        }
     }
 
     public void InstantiateShip()

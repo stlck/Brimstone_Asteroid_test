@@ -40,8 +40,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37e0de1671b22a4c893a60355be1253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Asteroids:
+  - {fileID: 400000, guid: 0a6f896dd9c025544b6e1927554427d3, type: 2}
   PlayerShip: {fileID: 400000, guid: 28169b6c51b21dc4b953c5c4c0c447a1, type: 2}
   GameTypeName: BAsteroidsTest
+  lobbyState: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
