@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: d89b4cedd1bb9f8489bad9eb1128385a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Sprite: {instanceID: 0}
+  - Bullet: {fileID: 400000, guid: aa9306e19de1e5f4ba4076407bd6da13, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
