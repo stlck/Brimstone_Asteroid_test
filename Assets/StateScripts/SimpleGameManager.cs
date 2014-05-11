@@ -22,7 +22,7 @@ public class SimpleGameManager : MonoBehaviour {
         //Manager = GameObject.FindObjectOfType<GameStateManager>();
         MasterServer.ClearHostList();
         MasterServer.RequestHostList(GameTypeName);
-        Time.timeScale = 0;
+   
         lobbyState = LobbyState.lobby;
 	}
 	
@@ -103,7 +103,7 @@ public class SimpleGameManager : MonoBehaviour {
 
     void HostGame()
     {
-        Network.InitializeServer(32, 25002, !Network.HavePublicAddress());
+        Network.InitializeServer(32, 7777, !Network.HavePublicAddress());
         MasterServer.RegisterHost(GameTypeName, "Test1");
     }
 

@@ -14,16 +14,11 @@ public class ShipControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (StateMachine.Instance.Current != StatePlay.Instance)
-			return;
-
 
 	}
 
 	void FixedUpdate()
 	{
-		if (StateMachine.Instance.Current != StatePlay.Instance)
-			return;
 
 		var hor = Input.GetAxis ("Horizontal") * -1;
 		var ver = Input.GetAxis ("Vertical");
