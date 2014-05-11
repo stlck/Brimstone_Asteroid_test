@@ -48,6 +48,13 @@ public class NetworkManager : MonoBehaviour {
         GUILayout.EndArea();
     }
 
+    void OnPlayerConnected(NetworkPlayer player) 
+    {
+        if(Network.isServer)
+            networkView.RPC("GetMyProps", player, MyProps.Id, MyProps.Name);
+
+    }
+
     void OnConnectedToServer()
     {
         networkView.RPC("GetMyProps", RPCMode.OthersBuffered, MyProps.Id, MyProps.Name);
