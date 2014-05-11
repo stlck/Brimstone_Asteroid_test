@@ -109,7 +109,7 @@ public class SimpleGameManager : MonoBehaviour {
     }
 
     [RPC]
-    void RPCStart()
+    public void RPCStart()
     {
         InstantiateShip();
         lobbyState = LobbyState.Playing;
@@ -128,5 +128,11 @@ public class SimpleGameManager : MonoBehaviour {
             Network.Instantiate(PlayerShip, Vector3.zero, Quaternion.identity, 0);
         else
             Transform.Instantiate(PlayerShip);
+    }
+
+    [RPC]
+    public void Shoot()
+    { 
+    
     }
 }

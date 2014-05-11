@@ -34,17 +34,12 @@ public class NetworkManager : MonoBehaviour {
                 GUILayout.Label("NAME");
                 MyProps.Name = GUILayout.TextField(MyProps.Name);
                 break;
-            case SimpleGameManager.LobbyState.Joined:
-                GUILayout.Label(MyProps.Name);
-                foreach(var prop in Others)
-                    GUILayout.Label(prop.Name);
-                break;
-            case SimpleGameManager.LobbyState.Playing:
-                GUILayout.Label(MyProps.Name);
-                foreach(var prop in Others)
-                    GUILayout.Label(prop.Name);
-                break;
         }
+
+        GUILayout.Label(MyProps.Name);
+        foreach (var prop in Others)
+            GUILayout.Label(prop.Name);
+
         GUILayout.EndArea();
     }
 

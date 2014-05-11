@@ -12,6 +12,7 @@ public class BulletControl : MonoBehaviour {
 	void Start () {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
+
 		lifespan = 75;
 		lifespan_current = 0;
 		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 500);

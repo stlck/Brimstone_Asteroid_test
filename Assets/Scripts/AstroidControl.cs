@@ -4,11 +4,14 @@ using System.Collections;
 public class AstroidControl : MonoBehaviour {
 	
 	private float play_width = 8f;
-	private float play_height = 6.2f;
+	private float play_height = 6f;
+
 	// Use this for initialization
 	void Start () {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
+
+
 		Vector3 start_post = new Vector3();
 		float X_or_Y = Random.Range(0f, 1f);
 		if (X_or_Y < 0.5)
@@ -42,8 +45,16 @@ public class AstroidControl : MonoBehaviour {
 			return;
 		if (collision.gameObject.tag == "Bullet") 
 		{
-			Destroy(collision.gameObject);
-			Destroy(this.gameObject);
+            if (Network.peerType != NetworkPeerType.Disconnected)
+            {
+                Network.Destroy(collision.gameObject);
+                Network.Destroy(this.gameObject);
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
+            }
 		}
 	}
 }

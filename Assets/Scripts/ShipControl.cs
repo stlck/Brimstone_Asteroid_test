@@ -6,7 +6,7 @@ public class ShipControl : MonoBehaviour {
 	public Sprite Sprite;
 	public Transform Bullet;
 	private float play_width = 8f;
-	private float play_height = 6.2f;
+	private float play_height = 6f;
 	
 	// Use this for initialization
 	void Start () {
