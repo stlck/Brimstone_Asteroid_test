@@ -29,7 +29,7 @@ public class ShipControl : MonoBehaviour {
 		var ver = Input.GetAxis ("Vertical");
 		var z = transform.TransformDirection(Vector3.right);
 
-		Debug.Log (z);
+
 		if (ver != 0)
 			rigidbody2D.AddForce ( z * ver * 100); //new Vector2(Mathf.Sin(z), Mathf.Cos (z))
 		else if (rigidbody2D.velocity.magnitude > 0)

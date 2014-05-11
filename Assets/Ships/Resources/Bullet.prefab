@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
-  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.259723783, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -67,7 +67,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 100000}
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -80,9 +80,9 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
 --- !u!114 &11400000

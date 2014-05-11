@@ -5,7 +5,7 @@ public class BulletControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 100);
+		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 200);
 	}
 	
 	// Update is called once per frame
