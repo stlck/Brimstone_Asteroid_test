@@ -37,5 +37,32 @@ public class ShipControl : MonoBehaviour {
 			var b = Instantiate(Bullet, transform.position + transform.forward, transform.rotation) as Transform;
 			//b.rigidbody2D.velocity = transform.forward *5;
 		}
+		Debug.Log("transform.position.y: " + transform.position.y.ToString());
+		if(transform.position.x > 8f)
+		{
+			Vector3 cur_Pos = transform.position;
+			cur_Pos.x = -(8f);
+			transform.position = cur_Pos;
+		}
+		
+		if(transform.position.x < -(8f))
+		{
+			Vector3 cur_Pos = transform.position;
+			cur_Pos.x = (8f);
+			transform.position = cur_Pos;
+		}	
+		if(transform.position.y > 6.2f)
+		{
+			Vector3 cur_Pos = transform.position;
+			cur_Pos.y = -(6.2f);
+			transform.position = cur_Pos;
+		}
+		
+		if(transform.position.y < -(6.2f))
+		{
+			Vector3 cur_Pos = transform.position;
+			cur_Pos.y = (6.2f);
+			transform.position = cur_Pos;
+		}	
 	}
 }
