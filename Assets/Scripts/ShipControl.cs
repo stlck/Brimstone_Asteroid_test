@@ -39,7 +39,7 @@ public class ShipControl : MonoBehaviour {
 			rigidbody2D.velocity -= rigidbody2D.velocity.normalized * .01f;
 		
 		if (hor != 0)
-			transform.RotateAround ( Vector3.forward, hor * .2f);
+			transform.RotateAround ( Vector3.forward, hor * .05f);
 		
 		if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
             if(!Network.isServer)

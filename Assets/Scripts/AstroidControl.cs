@@ -5,21 +5,27 @@ public class AstroidControl : MonoBehaviour {
 	
 	private float play_width = 8f;
 	private float play_height = 6f;
+    private SimpleGameManager manager;
+    public int Size = 3;
 
 	// Use this for initialization
 	void Start () {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
 
+        manager = GameObject.FindObjectOfType<SimpleGameManager>();
 
-		Vector3 start_post = new Vector3();
-		float X_or_Y = Random.Range(0f, 1f);
-		if (X_or_Y < 0.5)
-			start_post = new Vector3(Random.Range(-play_width, play_width),play_height,0);
-		else
-			start_post = new Vector3(play_width,Random.Range(-play_height, play_height),0);
+        if (Size == 3)
+        {
+            Vector3 start_post = new Vector3();
+            float X_or_Y = Random.Range(0f, 1f);
+            if (X_or_Y < 0.5)
+                start_post = new Vector3(Random.Range(-play_width, play_width), play_height, 0);
+            else
+                start_post = new Vector3(play_width, Random.Range(-play_height, play_height), 0);
 
-		transform.position = start_post;
+            transform.position = start_post;
+        }
 
 		// set speed
 		transform.Rotate(new Vector3(Random.Range(1f, 360f), Random.Range(1f, 360f), 0));
@@ -47,6 +53,8 @@ public class AstroidControl : MonoBehaviour {
 		{
             if (Network.peerType != NetworkPeerType.Disconnected)
             {
+                manager.SpawnAsteroid(this);
+
                 Network.Destroy(collision.gameObject);
                 Network.Destroy(this.gameObject);
             }

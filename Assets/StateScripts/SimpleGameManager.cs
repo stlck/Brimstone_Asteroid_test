@@ -5,7 +5,7 @@ using System.Linq;
 
 public class SimpleGameManager : MonoBehaviour {
 
-    public List<Transform> Asteroids = new List<Transform>();
+    public List<AstroidControl> Asteroids = new List<AstroidControl>();
     public Transform PlayerShip;
     public List<HostData> hostdata = new List<HostData>();
     public string GameTypeName = "BAsteroidsTest";
@@ -14,9 +14,12 @@ public class SimpleGameManager : MonoBehaviour {
         lobby,
         Hosting,
         Joined,
-        Playing
+        Playing,
+        WON
     }
     public LobbyState lobbyState;
+
+    List<Transform> Targets = new List<Transform>();
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +32,10 @@ public class SimpleGameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (lobbyState == LobbyState.Playing && Targets.All(m => m == null))
+        {
+            networkView.RPC("Victory", RPCMode.All);
+        }
 	}
 
     void OnGUI()
@@ -50,14 +56,15 @@ public class SimpleGameManager : MonoBehaviour {
                 break;
             case LobbyState.Hosting:
                 if (GUILayout.Button("Start"))
-                {
                     StartGame();
-                }
                 break;
             case LobbyState.Joined:
                 GUILayout.Label("Waiting");
                 break;
             case LobbyState.Playing:
+                break;
+            case LobbyState.WON:
+                GUILayout.Label("YOU WON THE GAME!!!!!!!!!!!!!!!!!!!");
                 break;
         }
 
@@ -116,9 +123,9 @@ public class SimpleGameManager : MonoBehaviour {
         
         if (Network.isServer)
         {
-            Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1);
-            Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1);
-            Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1);
+            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
+            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
+            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
         }
     }
 
@@ -131,8 +138,18 @@ public class SimpleGameManager : MonoBehaviour {
     }
 
     [RPC]
-    public void Shoot()
-    { 
-    
+    public void Victory()
+    {
+        lobbyState = LobbyState.WON;    
+    }
+
+    public void SpawnAsteroid(AstroidControl destroyed)
+    {
+        if (destroyed.Size == 1) 
+            return;
+
+        var go = Asteroids.First(m => m.Size == destroyed.Size - 1);
+        Targets.Add(Network.Instantiate(go.transform, destroyed.transform.position, Quaternion.identity, 1) as Transform);
+        Targets.Add(Network.Instantiate(go.transform, destroyed.transform.position, Quaternion.identity, 1) as Transform);
     }
 }

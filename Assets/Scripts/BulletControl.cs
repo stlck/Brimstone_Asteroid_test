@@ -6,6 +6,8 @@ public class BulletControl : MonoBehaviour {
 	// Use this for initialization
 	private float lifespan_current;
 	private float lifespan;
+
+    public Transform OnHitEffect;
 	
 	private float play_width = 8f;
 	private float play_height = 6.2f;
@@ -26,7 +28,7 @@ public class BulletControl : MonoBehaviour {
 		lifespan_current++;
 		if (lifespan_current >= lifespan)
 		{
-			Destroy(this.gameObject);
+			Network.Destroy(this.gameObject);
 		}
 		
 		//stay in x of game
@@ -40,5 +42,8 @@ public class BulletControl : MonoBehaviour {
 		
 	}
 	
-	
+	void OnCollisionEnter2D(Collision2D other)
+    {
+        Instantiate(OnHitEffect, transform.position, OnHitEffect.rotation);
+    }
 }
