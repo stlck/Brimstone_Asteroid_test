@@ -10,6 +10,8 @@ public class BulletControl : MonoBehaviour {
 	private float play_width = 8f;
 	private float play_height = 6.2f;
 	void Start () {
+		if(Network.peerType != NetworkPeerType.Server)
+			return;
 		lifespan = 75;
 		lifespan_current = 0;
 		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 500);
@@ -17,6 +19,8 @@ public class BulletControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if(Network.peerType != NetworkPeerType.Server)
+			return;
 		// live up to 'lifespan' only
 		lifespan_current++;
 		if (lifespan_current >= lifespan)

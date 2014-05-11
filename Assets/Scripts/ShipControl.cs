@@ -22,6 +22,9 @@ public class ShipControl : MonoBehaviour {
 	void FixedUpdate()
 	{
 		
+		if(!networkView.viewID.isMine)
+			return;
+
 		var hor = Input.GetAxis ("Horizontal") * -1;
 		var ver = Input.GetAxis ("Vertical");
 		var z = transform.TransformDirection(Vector3.right);

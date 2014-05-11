@@ -7,6 +7,8 @@ public class AstroidControl : MonoBehaviour {
 	private float play_height = 6.2f;
 	// Use this for initialization
 	void Start () {
+		if(Network.peerType != NetworkPeerType.Server)
+			return;
 		Vector3 start_post = new Vector3();
 		float X_or_Y = Random.Range(0f, 1f);
 		if (X_or_Y < 0.5)
@@ -25,6 +27,8 @@ public class AstroidControl : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		
+		if(Network.peerType != NetworkPeerType.Server)
+			return;
 		//stay in x of game
 		if (transform.position.x > play_width || transform.position.x < -play_width)
 		{	Vector3 cur_Pos = transform.position;cur_Pos.x = -(cur_Pos.x);transform.position = cur_Pos;}
@@ -34,9 +38,12 @@ public class AstroidControl : MonoBehaviour {
 		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
+		if(Network.peerType != NetworkPeerType.Server)
+			return;
 		if (collision.gameObject.tag == "Bullet") 
 		{
 			Destroy(collision.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 }
