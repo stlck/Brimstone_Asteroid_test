@@ -55,7 +55,10 @@ public class AstroidControl : MonoBehaviour {
             {
                 manager.SpawnAsteroid(this);
 
-                Network.Destroy(collision.gameObject);
+				if(collision.gameObject.networkView != null)
+                	Network.Destroy(collision.gameObject);
+				else
+                	Destroy(collision.gameObject);
                 Network.Destroy(this.gameObject);
             }
             else
