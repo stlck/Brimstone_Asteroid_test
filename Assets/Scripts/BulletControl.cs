@@ -12,8 +12,8 @@ public class BulletControl : MonoBehaviour {
 	private float play_width = 8f;
 	private float play_height = 6.2f;
 	void Start () {
-		if(!networkView.viewID.isMine)
-			return;
+		//if(!networkView.viewID.isMine)
+		//	return;
 
 		lifespan = 75;
 		lifespan_current = 0;
@@ -22,13 +22,14 @@ public class BulletControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (!networkView.viewID.isMine)
-			return;
+        //if (!networkView.viewID.isMine)
+		//	return;
 		// live up to 'lifespan' only
 		lifespan_current++;
 		if (lifespan_current >= lifespan)
 		{
-			Network.Destroy(this.gameObject);
+			Destroy(gameObject);
+			//Network.Destroy(this.gameObject);
 		}
 		
 		//stay in x of game
@@ -44,6 +45,8 @@ public class BulletControl : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D other)
     {
-        Instantiate(OnHitEffect, transform.position, OnHitEffect.rotation);
+        var go = Instantiate(OnHitEffect, transform.position, OnHitEffect.rotation) as Transform;
+		if(go != null)
+		Destroy (go.gameObject, 3f);
     }
 }
