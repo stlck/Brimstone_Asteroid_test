@@ -57,16 +57,14 @@ public class NetworkManager : MonoBehaviour {
 
 	void OnServerInitialized()
 	{
-		MyProps = new PlayerProps();
 		MyProps.Player = Network.player;
-		MyProps.Id = networkView.viewID;
-		MyProps.Name = "NamedPlayer";
-		Others.Add(MyProps);
+		//Others.Add(MyProps);
 	}
 
     void OnConnectedToServer()
     {
-
+			MyProps.Player = Network.player;
+		
 
         networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Id, MyProps.Name);
     }
