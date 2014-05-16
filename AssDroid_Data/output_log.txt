@@ -15,16 +15,8 @@ Platform assembly: C:\Users\Piety\Documents\GitHub\Brimstone_Asteroid_test\AssDr
 Loading C:\Users\Piety\Documents\GitHub\Brimstone_Asteroid_test\AssDroid_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Piety\Documents\GitHub\Brimstone_Asteroid_test\AssDroid_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
 Loading C:\Users\Piety\Documents\GitHub\Brimstone_Asteroid_test\AssDroid_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-- Completed reload, in  0.046 seconds
+- Completed reload, in  0.050 seconds
 desktop: 1920x1200 59Hz; virtual: 3200x1200 at -1280,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\Piety\Documents\GitHub\Brimstone_Asteroid_test\AssDroid_Data\Managed\System.Core.dll (this message is harmless)
-Received pong from 192.168.1.36:8888
- 
-(Filename:  Line: 831)
-
-Received pong from 192.168.1.36:8888
- 
-(Filename:  Line: 831)
-
