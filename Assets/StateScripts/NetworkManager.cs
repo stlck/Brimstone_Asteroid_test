@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class NetworkManager : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class NetworkManager : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        if (MyProps == null)
+        //if (MyProps == null)
         {
             MyProps = new PlayerProps();
 			MyProps.Player = Network.player;
@@ -37,7 +38,7 @@ public class NetworkManager : MonoBehaviour {
                 break;
         }
 
-        GUILayout.Label(MyProps.Name);
+        
         foreach (var prop in Others)
             GUILayout.Label(prop.Name);
 
@@ -47,9 +48,11 @@ public class NetworkManager : MonoBehaviour {
     void OnPlayerConnected(NetworkPlayer player) 
     {
         //if(Network.isServer)
-		foreach(var p in Others)
-			networkView.RPC("GetMyProps", player, p.Player, p.Id, p.Name);
-
+		foreach (var p in Others) {
+				
+			Debug.Log (p.Player + " " + p.Name);
+			networkView.RPC ("GetMyProps", player, p.Player, p.Id, p.Name);
+		}
     }
 
     void OnConnectedToServer()
@@ -60,13 +63,15 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     public void GetMyProps(NetworkPlayer p, NetworkViewID id,string n)
     {
-        if(!Others.Any(m => m.Id == id))
+		Debug.Log (p + " " + n);
+        if(!Others.Any(m => m.Player == p))
         {
             Others.Add(new PlayerProps() {Player = p, Id = id, Name = n });
         }
     }
 }
 
+[Serializable]
 public class PlayerProps
 {
 	public NetworkPlayer Player;
