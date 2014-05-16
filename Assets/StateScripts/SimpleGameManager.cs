@@ -120,7 +120,6 @@ public class SimpleGameManager : MonoBehaviour {
 			{
 				InstantiateShip(p.Player);
 			}
-			
 
             Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
             Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);

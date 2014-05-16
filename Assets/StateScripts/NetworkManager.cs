@@ -17,8 +17,8 @@ public class NetworkManager : MonoBehaviour {
 			MyProps.Player = Network.player;
             MyProps.Id = networkView.viewID;
             MyProps.Name = "NamedPlayer";
+			Others.Add(MyProps);
         }
-
 	}
 	
 	// Update is called once per frame
@@ -47,14 +47,14 @@ public class NetworkManager : MonoBehaviour {
     void OnPlayerConnected(NetworkPlayer player) 
     {
         //if(Network.isServer)
-			networkView.RPC("GetMyProps", player, Network.player, MyProps.Id, MyProps.Name);
+		foreach(var p in Others)
+			networkView.RPC("GetMyProps", player, p.Player, p.Id, p.Name);
 
-		Debug.Log (MyProps.Name + " " + Network.player);
     }
 
     void OnConnectedToServer()
     {
-        networkView.RPC("GetMyProps", RPCMode.Others, Network.player, MyProps.Id, MyProps.Name);
+        networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Id, MyProps.Name);
     }
 
     [RPC]
