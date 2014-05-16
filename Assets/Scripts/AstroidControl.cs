@@ -39,7 +39,7 @@ public class AstroidControl : MonoBehaviour {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
 
-		transform.rigidbody2D.velocity -= 0.1f;
+		//transform.rigidbody2D.velocity -= 0.1f;
 
 		//stay in x of game
 		if (transform.position.x > play_width || transform.position.x < -play_width)
