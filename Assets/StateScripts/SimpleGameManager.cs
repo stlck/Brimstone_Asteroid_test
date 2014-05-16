@@ -9,6 +9,7 @@ public class SimpleGameManager : MonoBehaviour {
 	public SimpleGameManager Manager;
 	public PlayerProps MyProps;
 	public List<PlayerProps> Players = new List<PlayerProps>();
+	public bool Spawn = true;
 
     public List<AstroidControl> Asteroids = new List<AstroidControl>();
     public Transform PlayerShip;
@@ -33,6 +34,7 @@ public class SimpleGameManager : MonoBehaviour {
         MasterServer.RequestHostList(GameTypeName);
 		networkMan = GetComponent<NetworkManager> ();
         lobbyState = LobbyState.lobby;
+		MyProps = new PlayerProps();
 	}
 	
 	// Update is called once per frame
@@ -57,6 +59,7 @@ public class SimpleGameManager : MonoBehaviour {
                 showLobby();
                 break;
             case LobbyState.Hosting:
+			Spawn = GUILayout.Toggle(Spawn, "Spawn asteroids");
                 if (GUILayout.Button("Start"))
                     StartGame();
                 break;
@@ -106,11 +109,6 @@ public class SimpleGameManager : MonoBehaviour {
             {
                 lobbyState = LobbyState.Joined;
                 Network.Connect(hd);
-
-				MyProps = new PlayerProps();
-				MyProps.Id = networkView.viewID;
-				MyProps.Name = "NamedPlayer";
-				Players.Add(MyProps);
             }
             GUILayout.EndHorizontal();
         }
@@ -131,6 +129,8 @@ public class SimpleGameManager : MonoBehaviour {
     {
         Network.InitializeServer(32, 8888, !Network.HavePublicAddress());
         MasterServer.RegisterHost(GameTypeName, "Test1");
+
+		Players.Add(MyProps);
     }
 
 	void OnMasterServerEvent(MasterServerEvent msEvent) {
@@ -145,14 +145,16 @@ public class SimpleGameManager : MonoBehaviour {
         
         if (Network.isServer)
         {
-			foreach(var p in networkMan.Others)
-			{
+			foreach(var p in Players)
 				InstantiateShip(p.Player);
-			}
+			if(Network.peerType == NetworkPeerType.Disconnected)
+				InstantiateShip(Network.player);
 
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
+			if(Spawn){
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
+			}
         }
     }
 
@@ -184,18 +186,18 @@ public class SimpleGameManager : MonoBehaviour {
     }
 
 	[RPC]
-	public void GetMyProps(NetworkPlayer p, NetworkViewID id,string n)
+	public void GetMyProps(NetworkPlayer p, string n)
 	{
 		if(!Players.Any(m => m.Player == p))
 		{
-			Players.Add(new PlayerProps() {Player = p, Id = id, Name = n });
+			Players.Add(new PlayerProps() {Player = p, Name = n });
 		}
 	}
 
 	void OnPlayerConnected(NetworkPlayer player) 
 	{
 		foreach (var p in Players) {
-			networkView.RPC ("GetMyProps", player, p.Player, p.Id, p.Name);
+			networkView.RPC ("GetMyProps", player, p.Player, p.Name);
 		}
 	}
 	
@@ -208,7 +210,7 @@ public class SimpleGameManager : MonoBehaviour {
 	{
 		MyProps.Player = Network.player;
 		
-		networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Id, MyProps.Name);
+		networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Name);
 	}
 }
 
@@ -216,7 +218,6 @@ public class SimpleGameManager : MonoBehaviour {
 public class PlayerProps
 {
 	public NetworkPlayer Player;
-	public NetworkViewID Id;
 	public string Name;
 	
 }

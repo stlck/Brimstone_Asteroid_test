@@ -170,6 +170,7 @@ MonoBehaviour:
   MyProps:
     Name: 
   Players: []
+  Spawn: 1
   Asteroids:
   - {fileID: 11400000, guid: 209cc250afafb084db613452c8418f99, type: 2}
   - {fileID: 11400000, guid: 18cf56d519412234b9bf43bd0a1b15b7, type: 2}

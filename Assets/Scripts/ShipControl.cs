@@ -37,6 +37,9 @@ public class ShipControl : MonoBehaviour {
 			if(!Network.isServer && (verticalInput > 0 || horizontalInput > 0))
 				networkView.RPC ("MoveMe", RPCMode.Server, horizontalInput, verticalInput);
 		}
+
+		if (Network.isServer)
+			move ();
 	}
 	
 	void FixedUpdate()
@@ -44,15 +47,6 @@ public class ShipControl : MonoBehaviour {
 		if(!Network.isServer)
 			return;
 
-		var z = transform.TransformDirection(Vector3.right);
-		
-		if (verticalInput != 0)
-			rigidbody2D.AddForce ( z * verticalInput * 100); //new Vector2(Mathf.Sin(z), Mathf.Cos (z))
-		else if (rigidbody2D.velocity.magnitude > 0)
-			rigidbody2D.velocity -= rigidbody2D.velocity.normalized * .01f;
-		
-		if (horizontalInput != 0)
-			transform.RotateAround ( Vector3.forward, horizontalInput * .1f);
 		
 		//stay in x of game
 		if (transform.position.x > play_width || transform.position.x < -play_width)
@@ -62,6 +56,21 @@ public class ShipControl : MonoBehaviour {
 		if (transform.position.y > play_height || transform.position.y < -play_height)
 		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
 
+
+
+	}
+
+	void move()
+	{
+		var z = transform.TransformDirection(Vector3.right);
+
+		if (verticalInput != 0 && rigidbody2D.velocity.magnitude <= 10)
+			rigidbody2D.AddForce ( z * verticalInput * 3000 * Time.deltaTime); //new Vector2(Mathf.Sin(z), Mathf.Cos (z))
+		//else if (rigidbody2D.velocity.magnitude > 0)
+		//	rigidbody2D.velocity -= rigidbody2D.velocity.normalized * Time.deltaTime;
+		
+		if (horizontalInput != 0)
+			transform.RotateAround ( Vector3.forward, horizontalInput * 2 * Time.deltaTime);
 
 		verticalInput = 0f;
 		horizontalInput = 0f;
