@@ -68,6 +68,7 @@ public class ShipControl : MonoBehaviour {
 	[RPC]
 	public void MoveMe(float hor, float ver)
 	{
+		Debug.Log (hor + " " + ver + " " + networkView.viewID.owner);
 		verticalInput = ver;
 		horizontalInput = hor;
 	}
