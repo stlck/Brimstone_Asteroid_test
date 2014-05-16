@@ -11,6 +11,8 @@ public class ShipControl : MonoBehaviour {
 	float horizontalInput = 0f;
 	float verticalInput = 0f;
 
+	public NetworkPlayer owner;
+
 	// Use this for initialization
 	void Start () {
 		//var sr = gameObject.AddComponent<SpriteRenderer> ();
@@ -20,9 +22,17 @@ public class ShipControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (networkView.viewID.isMine) {
+		if (owner == Network.player) {
 			horizontalInput = Input.GetAxis ("Horizontal") * -1;
 			verticalInput = Input.GetAxis ("Vertical");
+
+			if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
+				if(!Network.isServer)
+					networkView.RPC("Shoot", RPCMode.Server);
+				else
+					Shoot();
+				//b.rigidbody2D.velocity = transform.forward *5;
+			}
 
 			if(!Network.isServer)
 				networkView.RPC ("MoveMe", RPCMode.Server, horizontalInput, verticalInput);
@@ -44,14 +54,6 @@ public class ShipControl : MonoBehaviour {
 		if (horizontalInput != 0)
 			transform.RotateAround ( Vector3.forward, horizontalInput * .1f);
 		
-		if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
-            if(!Network.isServer)
-                networkView.RPC("Shoot", RPCMode.Server);
-            else
-                Shoot();
-			//b.rigidbody2D.velocity = transform.forward *5;
-		}
-		
 		//stay in x of game
 		if (transform.position.x > play_width || transform.position.x < -play_width)
 		{	Vector3 cur_Pos = transform.position;cur_Pos.x = -(cur_Pos.x);transform.position = cur_Pos;}
@@ -68,7 +70,6 @@ public class ShipControl : MonoBehaviour {
 	[RPC]
 	public void MoveMe(float hor, float ver)
 	{
-		Debug.Log (hor + " " + ver + " " + networkView.viewID.owner);
 		verticalInput = ver;
 		horizontalInput = hor;
 	}
@@ -78,4 +79,10 @@ public class ShipControl : MonoBehaviour {
     {
         Network.Instantiate(Bullet, transform.position + transform.forward + transform.right, transform.rotation, 2);
     }
+
+	[RPC]
+	public void SetOwner(NetworkPlayer p)
+	{
+		owner = p;
+	}
 }

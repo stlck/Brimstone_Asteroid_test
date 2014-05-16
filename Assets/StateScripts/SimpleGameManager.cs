@@ -18,7 +18,7 @@ public class SimpleGameManager : MonoBehaviour {
         WON
     }
     public LobbyState lobbyState;
-
+	NetworkManager networkMan;
     List<Transform> Targets = new List<Transform>();
 
 	// Use this for initialization
@@ -26,7 +26,7 @@ public class SimpleGameManager : MonoBehaviour {
         //Manager = GameObject.FindObjectOfType<GameStateManager>();
         MasterServer.ClearHostList();
         MasterServer.RequestHostList(GameTypeName);
-   
+		networkMan = GetComponent<NetworkManager> ();
         lobbyState = LobbyState.lobby;
 	}
 	
@@ -112,21 +112,29 @@ public class SimpleGameManager : MonoBehaviour {
     [RPC]
     public void RPCStart()
     {
-        InstantiateShip();
         lobbyState = LobbyState.Playing;
         
         if (Network.isServer)
         {
+			foreach(var p in networkMan.Others)
+			{
+				InstantiateShip(p.Player);
+			}
+			
+
             Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
             Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
             Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
         }
     }
 
-    public void InstantiateShip()
+    public void InstantiateShip(NetworkPlayer owner)
     {
         if (Network.peerType != NetworkPeerType.Disconnected)
-            Network.Instantiate(PlayerShip, Vector3.zero, Quaternion.identity, 0);
+		{    
+			var ship = Network.Instantiate(PlayerShip, Vector3.zero, Quaternion.identity, 0) as Transform;
+			ship.networkView.RPC("SetOwner", RPCMode.All, owner);
+		}
         else
             Transform.Instantiate(PlayerShip);
     }
