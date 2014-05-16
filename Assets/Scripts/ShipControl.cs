@@ -34,7 +34,7 @@ public class ShipControl : MonoBehaviour {
 				//b.rigidbody2D.velocity = transform.forward *5;
 			}
 
-			if(!Network.isServer)
+			if(!Network.isServer && (verticalInput > 0 || horizontalInput > 0))
 				networkView.RPC ("MoveMe", RPCMode.Server, horizontalInput, verticalInput);
 		}
 	}
