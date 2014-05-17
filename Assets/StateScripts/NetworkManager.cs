@@ -14,11 +14,7 @@ public class NetworkManager : MonoBehaviour {
 	void Start () {
         //if (MyProps == null)
         {
-			MyProps = new PlayerProps();
-			MyProps.Player = Network.player;
-			MyProps.Id = networkView.viewID;
-			MyProps.Name = "NamedPlayer";
-			Others.Add(MyProps);
+
         }
 	}
 	
@@ -27,64 +23,9 @@ public class NetworkManager : MonoBehaviour {
 	
 	}
 
-    void OnGUI()
-    {
-        GUILayout.BeginArea(new Rect(Screen.width - 200, 10, 200, 200));
-        switch (Manager.lobbyState)
-        {
-            case SimpleGameManager.LobbyState.lobby:
-                GUILayout.Label("NAME");
-                MyProps.Name = GUILayout.TextField(MyProps.Name);
-                break;
-        }
+    
 
-        
-        foreach (var prop in Others)
-            GUILayout.Label(prop.Name);
+    
 
-        GUILayout.EndArea();
-    }
-
-    void OnPlayerConnected(NetworkPlayer player) 
-    {
-        //if(Network.isServer)
-		foreach (var p in Others) {
-				
-			Debug.Log (p.Player + " " + p.Name);
-			networkView.RPC ("GetMyProps", player, p.Player, p.Id, p.Name);
-		}
-    }
-
-	void OnServerInitialized()
-	{
-		MyProps.Player = Network.player;
-		//Others.Add(MyProps);
-	}
-
-    void OnConnectedToServer()
-    {
-			MyProps.Player = Network.player;
-		
-
-        networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Id, MyProps.Name);
-    }
-
-    [RPC]
-    public void GetMyProps(NetworkPlayer p, NetworkViewID id,string n)
-    {
-		Debug.Log (p + " " + n);
-        if(!Others.Any(m => m.Player == p))
-        {
-            Others.Add(new PlayerProps() {Player = p, Id = id, Name = n });
-        }
-    }
-}
-
-[Serializable]
-public class PlayerProps
-{
-	public NetworkPlayer Player;
-    public NetworkViewID Id;
-    public string Name;
 
 }

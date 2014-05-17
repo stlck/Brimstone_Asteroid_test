@@ -2,8 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class SimpleGameManager : MonoBehaviour {
+
+	public SimpleGameManager Manager;
+	public PlayerProps MyProps;
+	public List<PlayerProps> Players = new List<PlayerProps>();
+	public bool Spawn = true;
 
     public List<AstroidControl> Asteroids = new List<AstroidControl>();
     public Transform PlayerShip;
@@ -28,6 +34,8 @@ public class SimpleGameManager : MonoBehaviour {
         MasterServer.RequestHostList(GameTypeName);
 		networkMan = GetComponent<NetworkManager> ();
         lobbyState = LobbyState.lobby;
+		MyProps = new PlayerProps();
+		MyProps.Name = "1234";
 	}
 	
 	// Update is called once per frame
@@ -42,6 +50,8 @@ public class SimpleGameManager : MonoBehaviour {
         switch (lobbyState)
         {
             case LobbyState.lobby:
+				GUILayout.Label("NAME");
+				MyProps.Name = GUILayout.TextField(MyProps.Name);
                 if (GUILayout.Button("Refresh"))
                     RefreshLobby();
                 if (GUILayout.Button("Host"))
@@ -52,11 +62,13 @@ public class SimpleGameManager : MonoBehaviour {
                 showLobby();
                 break;
             case LobbyState.Hosting:
+			Spawn = GUILayout.Toggle(Spawn, "Spawn asteroids");
                 if (GUILayout.Button("Start"))
                     StartGame();
                 break;
             case LobbyState.Joined:
                 GUILayout.Label("Waiting");
+				showWaiting();
                 break;
             case LobbyState.Playing:
                 break;
@@ -65,6 +77,16 @@ public class SimpleGameManager : MonoBehaviour {
         if (GUILayout.Button("Quit"))
             Application.Quit();
     }
+
+	void showWaiting()
+	{
+		GUILayout.BeginArea(new Rect(Screen.width - 200, 10, 200, 200));
+		
+		foreach (var prop in Players)
+			GUILayout.Label(prop.Name);
+		
+		GUILayout.EndArea();
+	}
 
     void showLobby()
     {
@@ -94,7 +116,7 @@ public class SimpleGameManager : MonoBehaviour {
 
     void RefreshLobby()
     {
-        hostdata = MasterServer.PollHostList().ToList();
+        MasterServer.RequestHostList(GameTypeName);
     }
 
     void StartGame()
@@ -107,7 +129,14 @@ public class SimpleGameManager : MonoBehaviour {
     {
         Network.InitializeServer(32, 8888, !Network.HavePublicAddress());
         MasterServer.RegisterHost(GameTypeName, "Test1");
+
+		Players.Add(MyProps);
     }
+
+	void OnMasterServerEvent(MasterServerEvent msEvent) {
+		if(msEvent == MasterServerEvent.HostListReceived)
+        	hostdata = MasterServer.PollHostList().ToList();
+	}
 
     [RPC]
     public void RPCStart()
@@ -116,14 +145,16 @@ public class SimpleGameManager : MonoBehaviour {
         
         if (Network.isServer)
         {
-			foreach(var p in networkMan.Others)
-			{
+			foreach(var p in Players)
 				InstantiateShip(p.Player);
-			}
+			if(Network.peerType == NetworkPeerType.Disconnected)
+				InstantiateShip(Network.player);
 
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
-            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
+			if(Spawn){
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(5, 0, 0), Quaternion.identity, 1) as Transform);
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(-5, 3, 0), Quaternion.identity, 1) as Transform);
+	            Targets.Add(Network.Instantiate(Asteroids[0], new Vector3(0, -3, 0), Quaternion.identity, 1) as Transform);
+			}
         }
     }
 
@@ -153,4 +184,40 @@ public class SimpleGameManager : MonoBehaviour {
         Targets.Add(Network.Instantiate(go.transform, destroyed.transform.position, Quaternion.identity, 1) as Transform);
         Targets.Add(Network.Instantiate(go.transform, destroyed.transform.position, Quaternion.identity, 1) as Transform);
     }
+
+	[RPC]
+	public void GetMyProps(NetworkPlayer p, string n)
+	{
+		if(!Players.Any(m => m.Player == p))
+		{
+			Players.Add(new PlayerProps() {Player = p, Name = n });
+		}
+	}
+
+	void OnPlayerConnected(NetworkPlayer player) 
+	{
+		foreach (var p in Players) {
+			networkView.RPC ("GetMyProps", player, p.Player, p.Name);
+		}
+	}
+	
+	void OnServerInitialized()
+	{
+		MyProps.Player = Network.player;
+	}
+	
+	void OnConnectedToServer()
+	{
+		MyProps.Player = Network.player;
+		
+		networkView.RPC("GetMyProps", RPCMode.Server, Network.player, MyProps.Name);
+	}
+}
+
+[Serializable]
+public class PlayerProps
+{
+	public NetworkPlayer Player;
+	public string Name;
+	
 }
