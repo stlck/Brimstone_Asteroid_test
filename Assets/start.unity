@@ -141,12 +141,11 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-  m_PrefabInternal: {fileID: 1703732162}
+  m_PrefabInternal: {fileID: 2120972020}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 513217341}
   - 148: {fileID: 513217343}
-  - 114: {fileID: 513217342}
   - 114: {fileID: 513217340}
   m_Layer: 0
   m_Name: Manager
@@ -160,13 +159,18 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb,
     type: 2}
-  m_PrefabInternal: {fileID: 1703732162}
+  m_PrefabInternal: {fileID: 2120972020}
   m_GameObject: {fileID: 513217339}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e37e0de1671b22a4c893a60355be1253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  MyProps:
+    Name: 
+  Players: []
+  Spawn: 1
   Asteroids:
   - {fileID: 11400000, guid: 209cc250afafb084db613452c8418f99, type: 2}
   - {fileID: 11400000, guid: 18cf56d519412234b9bf43bd0a1b15b7, type: 2}
@@ -178,32 +182,19 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-  m_PrefabInternal: {fileID: 1703732162}
+  m_PrefabInternal: {fileID: 2120972020}
   m_GameObject: {fileID: 513217339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!114 &513217342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: cb6bbebf3e443a94dba529ab1b60bdfb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1703732162}
-  m_GameObject: {fileID: 513217339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694a76a576c462046b738b2e4bd71034, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 513217340}
 --- !u!148 &513217343
 NetworkView:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 14800000, guid: cb6bbebf3e443a94dba529ab1b60bdfb,
     type: 2}
-  m_PrefabInternal: {fileID: 1703732162}
+  m_PrefabInternal: {fileID: 2120972020}
   m_GameObject: {fileID: 513217339}
   m_Enabled: 1
   m_StateSynchronization: 1
@@ -422,17 +413,13 @@ Transform:
   m_LocalScale: {x: .688365281, y: .688364625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1001 &1703732162
+--- !u!1001 &2120972020
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-      propertyPath: Asteroids.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -469,21 +456,6 @@ Prefab:
       propertyPath: m_ViewID.m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-      propertyPath: Asteroids.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 209cc250afafb084db613452c8418f99,
-        type: 2}
-    - target: {fileID: 11400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-      propertyPath: Asteroids.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 18cf56d519412234b9bf43bd0a1b15b7,
-        type: 2}
-    - target: {fileID: 11400000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
-      propertyPath: Asteroids.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: a375d1a70add48e45851bad21774c496,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb6bbebf3e443a94dba529ab1b60bdfb, type: 2}
   m_RootGameObject: {fileID: 513217339}
