@@ -35,6 +35,7 @@ public class SimpleGameManager : MonoBehaviour {
 		networkMan = GetComponent<NetworkManager> ();
         lobbyState = LobbyState.lobby;
 		MyProps = new PlayerProps();
+		MyProps.Name = "1234";
 	}
 	
 	// Update is called once per frame
@@ -49,6 +50,8 @@ public class SimpleGameManager : MonoBehaviour {
         switch (lobbyState)
         {
             case LobbyState.lobby:
+				GUILayout.Label("NAME");
+				MyProps.Name = GUILayout.TextField(MyProps.Name);
                 if (GUILayout.Button("Refresh"))
                     RefreshLobby();
                 if (GUILayout.Button("Host"))
@@ -78,9 +81,6 @@ public class SimpleGameManager : MonoBehaviour {
 	void showWaiting()
 	{
 		GUILayout.BeginArea(new Rect(Screen.width - 200, 10, 200, 200));
-
-		GUILayout.Label("NAME");
-		MyProps.Name = GUILayout.TextField(MyProps.Name);
 		
 		foreach (var prop in Players)
 			GUILayout.Label(prop.Name);

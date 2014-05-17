@@ -23,22 +23,22 @@ public class ShipControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (owner == Network.player) {
-			horizontalInput = Input.GetAxis ("Horizontal") * -1;
-			verticalInput = Input.GetAxis ("Vertical");
+						horizontalInput = Input.GetAxis ("Horizontal")* -1;
+						verticalInput = Input.GetAxis ("Vertical");
 
-			if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
-				if(!Network.isServer)
-					networkView.RPC("Shoot", RPCMode.Server);
-				else
-					Shoot();
-				//b.rigidbody2D.velocity = transform.forward *5;
-			}
+						if (Input.GetKeyDown (KeyCode.Space) && Bullet != null) {
+								if (!Network.isServer)
+										networkView.RPC ("Shoot", RPCMode.Server);
+								else
+										Shoot ();
+								//b.rigidbody2D.velocity = transform.forward *5;
+						}
 
-			if(!Network.isServer && (verticalInput > 0 || horizontalInput > 0))
-				networkView.RPC ("MoveMe", RPCMode.Server, horizontalInput, verticalInput);
-		}
+						if (!Network.isServer && (verticalInput != 0 || horizontalInput != 0))
+								networkView.RPC ("SetINput", RPCMode.Server, verticalInput, horizontalInput);
+				} 
 
-		if (Network.isServer)
+		if(Network.isServer)
 			move ();
 	}
 	
@@ -47,6 +47,7 @@ public class ShipControl : MonoBehaviour {
 		if(!Network.isServer)
 			return;
 
+		networkView.RPC ("MoveMe", RPCMode.Others, transform.position, transform.eulerAngles, rigidbody2D.velocity.x, rigidbody2D.velocity.y);
 		
 		//stay in x of game
 		if (transform.position.x > play_width || transform.position.x < -play_width)
@@ -56,8 +57,13 @@ public class ShipControl : MonoBehaviour {
 		if (transform.position.y > play_height || transform.position.y < -play_height)
 		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
 
+	}
 
-
+	[RPC]
+	public void SetINput(float ver, float hor)
+	{
+		verticalInput = ver;
+		horizontalInput = hor;
 	}
 
 	void move()
@@ -77,10 +83,11 @@ public class ShipControl : MonoBehaviour {
 	}
 
 	[RPC]
-	public void MoveMe(float hor, float ver)
+	public void MoveMe(Vector3 pos, Vector3 rot, float x, float y)
 	{
-		verticalInput = ver;
-		horizontalInput = hor;
+		transform.position = pos;
+		transform.eulerAngles = rot;
+		rigidbody2D.velocity = new Vector2 (x, y);
 	}
 
     [RPC]

@@ -10,6 +10,8 @@ public class AstroidControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		transform.Rotate(new Vector3(Random.Range(1f, 360f), Random.Range(1f, 360f), 0));
+
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
 
@@ -28,10 +30,11 @@ public class AstroidControl : MonoBehaviour {
         }
 
 		// set speed
-		transform.Rotate(new Vector3(Random.Range(1f, 360f), Random.Range(1f, 360f), 0));
 		transform.rigidbody2D.AddForce ( transform.forward * 150);
 	
 	}
+
+
 
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -46,7 +49,17 @@ public class AstroidControl : MonoBehaviour {
 		//stay in y of game
 		if (transform.position.y > play_height || transform.position.y < -play_height)
 		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
+
+		networkView.RPC ("MveMe", RPCMode.All,transform.position, rigidbody2D.velocity.x, rigidbody2D.velocity.y);
 	}
+
+	[RPC]
+	public void MveMe(Vector3 pos, float x, float y)
+	{
+		transform.position = pos;
+		rigidbody2D.velocity = new Vector2(x,y);
+	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
 		if(Network.peerType != NetworkPeerType.Server)
 			return;
