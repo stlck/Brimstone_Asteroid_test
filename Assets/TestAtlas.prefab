@@ -39,7 +39,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: ce4e8eebc339ccf4a840cba48dc7310f, type: 2}
-  sprites: []
+  sprites:
+  - name: Planet_Y
+    outer:
+      serializedVersion: 2
+      x: 513
+      y: 173
+      width: 335
+      height: 339
+    inner:
+      serializedVersion: 2
+      x: 513
+      y: 173
+      width: 335
+      height: 339
+    rotated: 0
+    paddingLeft: .25074628
+    paddingRight: .277611941
+    paddingTop: .230088502
+    paddingBottom: .280235976
+  - name: Planet_X
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 512
+      height: 464
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 512
+      height: 464
+    rotated: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: .0280172415
+    paddingBottom: .075431034
+  - name: Box border
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 30
+      width: 30
+      height: 17
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 30
+      width: 30
+      height: 17
+    rotated: 0
+    paddingLeft: .5
+    paddingRight: 30.5
+    paddingTop: 1.29411769
+    paddingBottom: 40.0588226
+  - name: Box filling
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 14
+      width: 28
+      height: 15
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 14
+      width: 28
+      height: 15
+    rotated: 0
+    paddingLeft: .571428597
+    paddingRight: 32.7142868
+    paddingTop: 1.5333333
+    paddingBottom: 45.4666672
   mCoordinates: 0
   mPixelSize: 1
   mReplacement: {fileID: 0}
