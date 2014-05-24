@@ -7,3 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/start.unity
+  - enabled: 1
+    path: Assets/SpaceScenes/SpaceStartMenu.unity
+  - enabled: 1
+    path: Assets/SpaceScenes/SpaceCommandMenu.unity
+  - enabled: 1
+    path: Assets/SpaceScenes/SpaceFlightScene.unity
