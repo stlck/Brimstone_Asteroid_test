@@ -12,7 +12,9 @@ public class SpacePlayerObject : MonoBehaviour {
 	}
 
 	public ShipControlTranslate ShipObject;
+	public WeaponControl WeaponObject;
 	ShipControlTranslate spawnedShip;
+
 	// Use this for initialization
 	void Start () {
 		if (_instance == null)
@@ -39,6 +41,9 @@ public class SpacePlayerObject : MonoBehaviour {
 			spawnedShip = Network.Instantiate(ShipObject, Vector3.zero, ShipObject.transform.rotation, 0) as ShipControlTranslate;
 
 		spawnedShip.owner = Network.player;
+
+		var weapon = Instantiate (WeaponObject, spawnedShip.transform.position, spawnedShip.transform.rotation) as WeaponControl;
+		weapon.transform.parent = spawnedShip.transform;
 	}
 
 

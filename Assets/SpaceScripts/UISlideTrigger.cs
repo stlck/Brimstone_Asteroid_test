@@ -3,6 +3,7 @@ using System.Collections;
 
 public class UISlideTrigger : MonoBehaviour {
 
+	public GameObject TriggerButton;
 	public bool State = false;
 	Animator _anim;
 
@@ -11,8 +12,9 @@ public class UISlideTrigger : MonoBehaviour {
 		_anim = GetComponent< Animator>();
 	}
 
-	public void Slide()
+	public void Slide(bool state)
 	{
-		_anim.SetTrigger ("Slide");
+		State = state;
+		_anim.SetBool ("Slide", State);
 	}
 }
