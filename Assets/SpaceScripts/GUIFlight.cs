@@ -11,7 +11,8 @@ public class GUIFlight : MonoBehaviour {
 
 	void OnLevelWasLoaded(int level)
 	{
-		playerObject = SpacePlayerObject.Instance;
+
+		//playerObject = SpacePlayerObject.Instance;
 		playerObject.SpawnShip ();
 	}
 	

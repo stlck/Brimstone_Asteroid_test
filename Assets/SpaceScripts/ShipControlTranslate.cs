@@ -4,11 +4,9 @@ using System.Collections;
 public class ShipControlTranslate : MonoBehaviour {
 
 	public NetworkPlayer owner;
+	public float Speed = 1;
+	public float StrafeSpeed = 1;
 	Camera cam;
-	[Range(0,3)]
-	float horVelocity = 1;
-	[Range(0,3)]
-	float verVelocity = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -24,13 +22,17 @@ public class ShipControlTranslate : MonoBehaviour {
 			var horizontalInput = Input.GetAxis ("Horizontal") * Time.deltaTime;
 			var verticalInput = Input.GetAxis ("Vertical") * Time.deltaTime;
 
-			transform.Translate (Vector3.right * horizontalInput);
-			transform.Translate (Vector3.forward * verticalInput);
-			
+			transform.Translate (Vector3.right * horizontalInput * Speed);
+			transform.Translate (Vector3.forward * verticalInput * StrafeSpeed);
+
+			var pos = transform.position;
+			pos.z = 0;
+			transform.position = pos;
+
 			transform.LookAt(target, Vector3.forward * -1);
 
 			if(Network.peerType != NetworkPeerType.Disconnected)
-				networkView.RPC ("UpdateMe", RPCMode.Others, transform.position, transform.rotation);
+				networkView.RPC ("UpdateMe", RPCMode.Others, pos, transform.rotation);
 		}
 	}
 

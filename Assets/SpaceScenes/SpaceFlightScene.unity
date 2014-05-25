@@ -174,7 +174,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -2475,31 +2475,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00340715493
+      value: .00328947371
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00340715493
+      value: .00328947371
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00340715493
+      value: .00328947371
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 390.83374
+      value: 404.83371
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 293.999908
+      value: 304.500122
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -391.833008
+      value: -405.833069
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 293.999908
+      value: 304.500122
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 180cead7330bd8b4e9af3047732ceea9, type: 2}
@@ -2515,8 +2515,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 295034868}
   - 114: {fileID: 295034871}
-  - 114: {fileID: 295034870}
   - 114: {fileID: 295034869}
+  - 114: {fileID: 295034870}
   m_Layer: 8
   m_Name: GuiFlight
   m_TagString: Untagged
@@ -2532,7 +2532,7 @@ Transform:
   m_GameObject: {fileID: 295034867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.45949221, y: 11.4568977, z: 0}
-  m_LocalScale: {x: .00340715493, y: .00340715493, z: .00340715493}
+  m_LocalScale: {x: .00328947371, y: .00328947371, z: .00328947371}
   m_Children:
   - {fileID: 1315920224}
   - {fileID: 997506027}
@@ -2557,17 +2557,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 293.5
+    e00: 304
     e01: 0
     e02: 0
-    e03: -1308.86096
+    e03: -1355.68567
     e10: 0
-    e11: 293.5
+    e11: 304
     e12: 0
-    e13: -3362.59937
+    e13: -3482.89697
     e20: 0
     e21: 0
-    e22: 293.5
+    e22: 304
     e23: 0
     e30: 0
     e31: 0
@@ -2587,11 +2587,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 295034867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b2157b4e99c21459dd57a2da79cd74, type: 3}
+  m_Script: {fileID: 11500000, guid: e96666f2fd61b8c4f8f246ecb073429a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerLabelText: Hej
-  PlayerNameLabel: {fileID: 462203458}
 --- !u!114 &295034871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,7 +2899,7 @@ Transform:
   m_PrefabInternal: {fileID: 273368287}
   m_GameObject: {fileID: 997506025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 390.83374, y: 293.999908, z: 0}
+  m_LocalPosition: {x: 404.83371, y: 304.500122, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1744762205}
@@ -3030,7 +3028,7 @@ Transform:
   m_PrefabInternal: {fileID: 273368287}
   m_GameObject: {fileID: 1315920223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -391.833008, y: 293.999908, z: 0}
+  m_LocalPosition: {x: -405.833069, y: 304.500122, z: 0}
   m_LocalScale: {x: 239.999985, y: 239.999985, z: 239.999985}
   m_Children:
   - {fileID: 1903268825}

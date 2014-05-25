@@ -2,26 +2,15 @@
 using System.Collections;
 
 public class SpacePlayerObject : MonoBehaviour {
-
-	private static SpacePlayerObject _instance;
-	public static SpacePlayerObject Instance
-	{
-		get{
-			return _instance;
-		}
-	}
-
+	
+	public NetworkPlayer Owner;
 	public ShipControlTranslate ShipObject;
 	public WeaponControl WeaponObject;
+
 	ShipControlTranslate spawnedShip;
 
 	// Use this for initialization
 	void Start () {
-		if (_instance == null)
-			_instance = this;
-		else
-			Destroy (gameObject);
-
 		DontDestroyOnLoad (gameObject);
 	}
 	
@@ -42,9 +31,16 @@ public class SpacePlayerObject : MonoBehaviour {
 
 		spawnedShip.owner = Network.player;
 
-		var weapon = Instantiate (WeaponObject, spawnedShip.transform.position, spawnedShip.transform.rotation) as WeaponControl;
+		var weapon = Instantiate (WeaponObject, spawnedShip.transform.position, Quaternion.identity) as WeaponControl;
 		weapon.transform.parent = spawnedShip.transform;
+		weapon.transform.rotation = Quaternion.identity;
+
+		Camera.main.gameObject.AddComponent<CameraFollow> ().target = spawnedShip.transform;
 	}
 
-
+	[RPC]
+	void SetOwner(NetworkPlayer owner)
+	{
+		Owner = owner;
+	}
 }

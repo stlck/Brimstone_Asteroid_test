@@ -17,7 +17,7 @@ public class BulletControl : MonoBehaviour {
 
 		lifespan = 75;
 		lifespan_current = 0;
-		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 500);
+		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.forward) * 500);
 	}
 	
 	// Update is called once per frame
