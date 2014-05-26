@@ -35,6 +35,6 @@ public class WeaponControl : MonoBehaviour {
 		if (Network.peerType == NetworkPeerType.Disconnected)
 			Instantiate (Ammonition, transform.root.position + transform.forward, transform.rotation);
 		else
-			Network.Instantiate(Ammonition, transform.root.forward, transform.root.rotation, 0);
+            Network.Instantiate(Ammonition, transform.root.position + transform.forward, transform.root.rotation, 0);
 	}
 }

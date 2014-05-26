@@ -12,10 +12,10 @@ public class GUICommand : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//playerObject = SpacePlayerObject.Instance;
+		playerObject = SpacePlayerObject.Instance;
 
 		foreach(var p in PanelTriggers)
-		UIEventListener.Get(p.TriggerButton).onClick += TriggerClicked;
+		    UIEventListener.Get(p.TriggerButton).onClick += TriggerClicked;
 	}
 
 	public void TriggerClicked(GameObject go)
@@ -45,7 +45,10 @@ public class GUICommand : MonoBehaviour {
 
 	public void DepartPressed()
 	{
-		Application.LoadLevel ("SpaceFlightScene");
+        SpaceGameManager.Instance.LaunchMission();
+        //SpaceGameManager.Instance.networkView.RPC("", RPCMode.Server, "SpaceFlightScene");
+
+        //Application.LoadLevel ("SpaceFlightScene");
 	}
 
 	public void ShipSelected(string ship)

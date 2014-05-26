@@ -3,18 +3,13 @@ using System.Collections;
 
 public class SpaceNetworkItem : MonoBehaviour {
 
-    public int ID;
+    public string ID;
     public SpaceItemType ItemType;
     public string Name;
+    public NetworkPlayer Owner;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
 

@@ -32,7 +32,7 @@ public class ShipControlTranslate : MonoBehaviour {
 			transform.LookAt(target, Vector3.forward * -1);
 
 			if(Network.peerType != NetworkPeerType.Disconnected)
-				networkView.RPC ("UpdateMe", RPCMode.Others, pos, transform.rotation);
+				networkView.RPC ("UpdateMe", RPCMode.Others, pos, transform.eulerAngles);
 		}
 	}
 

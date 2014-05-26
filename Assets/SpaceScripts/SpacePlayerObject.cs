@@ -2,7 +2,15 @@
 using System.Collections;
 
 public class SpacePlayerObject : MonoBehaviour {
-	
+    private static SpacePlayerObject _instance;
+    public static SpacePlayerObject Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
 	public NetworkPlayer Owner;
 	public ShipControlTranslate ShipObject;
 	public WeaponControl WeaponObject;
@@ -12,6 +20,10 @@ public class SpacePlayerObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (gameObject);
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -38,9 +50,9 @@ public class SpacePlayerObject : MonoBehaviour {
 		Camera.main.gameObject.AddComponent<CameraFollow> ().target = spawnedShip.transform;
 	}
 
-	[RPC]
-	void SetOwner(NetworkPlayer owner)
-	{
-		Owner = owner;
-	}
+    //[RPC]
+    //void SetOwner(NetworkPlayer owner)
+    //{
+    //    Owner = owner;
+    //}
 }
