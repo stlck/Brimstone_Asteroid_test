@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: MachineGuns
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c4d9c10bfbf7d49b42af9ecf9f0da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammonition: {fileID: 11400000, guid: 4ec31ded2b1947f499b5be275018aea7, type: 2}
-  ShotCooldown: .300000012
+  Ammonition: {fileID: 11400000, guid: aa9306e19de1e5f4ba4076407bd6da13, type: 2}
+  ShotCooldown: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd425966263647468e0bff0c6dfcb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 0
   ItemType: 1
-  Name: Machine Gun
+  Name: Cannon EX10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

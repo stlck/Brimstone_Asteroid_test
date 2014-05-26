@@ -16,15 +16,13 @@ public class GoogleGameManager : MonoBehaviour {
 		
 		// Activate the Google Play Games platform
 		PlayGamesPlatform.Activate();
-
+		Debug.Log (Social.Active);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Social.localUser.Authenticate((bool success) => {
-			// handle success or failure
-		});
+
 	}
 
 	void OnGUI() {
@@ -40,7 +38,7 @@ public class GoogleGameManager : MonoBehaviour {
 		string buttonLabel = Social.localUser.authenticated ? "Sign Out" : "Authenticate";
 		Rect buttonRect = new Rect(0.25f * Screen.width, 0.25f * Screen.height,
 		                           0.5f * Screen.width, 0.5f * Screen.height);
-		
+
 		if (GUI.Button(buttonRect, buttonLabel)) {
 			if (!Social.localUser.authenticated) {
 				// Authenticate

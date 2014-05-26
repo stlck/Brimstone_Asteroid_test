@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
+  - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: MachineGuns
+  m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .14952676, y: 1.4131912, z: -.108912349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -36,25 +36,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c4d9c10bfbf7d49b42af9ecf9f0da1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ac9291565b15bc42a8486bd01d7ab41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammonition: {fileID: 11400000, guid: 4ec31ded2b1947f499b5be275018aea7, type: 2}
-  ShotCooldown: .300000012
---- !u!114 &11400002
-MonoBehaviour:
+  ShipObject: {fileID: 11400000, guid: 12f3ab589c7d2604681e550546e6fbd5, type: 2}
+  WeaponObject: {fileID: 11400000, guid: 06086be4a41b2f84daedf60347f08db3, type: 2}
+--- !u!148 &14800000
+NetworkView:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd425966263647468e0bff0c6dfcb81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
-  ItemType: 1
-  Name: Machine Gun
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 11400000}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

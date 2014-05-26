@@ -17,7 +17,7 @@ public class BulletControl : MonoBehaviour {
 
 		lifespan = 75;
 		lifespan_current = 0;
-		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.right) * 500);
+		transform.rigidbody2D.AddForce ( transform.TransformDirection(Vector3.forward) * 500);
 	}
 	
 	// Update is called once per frame
@@ -33,12 +33,12 @@ public class BulletControl : MonoBehaviour {
 		}
 		
 		//stay in x of game
-		if (transform.position.x > play_width || transform.position.x < -play_width)
-		{	Vector3 cur_Pos = transform.position;cur_Pos.x = -(cur_Pos.x);transform.position = cur_Pos;}
+        //if (transform.position.x > play_width || transform.position.x < -play_width)
+        //{	Vector3 cur_Pos = transform.position;cur_Pos.x = -(cur_Pos.x);transform.position = cur_Pos;}
 		
 		//stay in y of game
-		if (transform.position.y > play_height || transform.position.y < -play_height)
-		{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
+        //if (transform.position.y > play_height || transform.position.y < -play_height)
+        //{	Vector3 cur_Pos = transform.position;cur_Pos.y = -(cur_Pos.y);transform.position = cur_Pos;}
 		
 		
 	}

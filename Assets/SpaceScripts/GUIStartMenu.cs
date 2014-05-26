@@ -22,12 +22,15 @@ public class GUIStartMenu : MonoBehaviour {
 		else
 			Destroy (gameObject);
 
+        if (PlayerPrefs.HasKey("PlayerName"))
+            PlayerNameLabel.text = PlayerPrefs.GetString("PlayerName");
 	}
 
 	public UIInput PlayerNameLabel;
 	public string GetPlayerName
 	{
 		get{
+            PlayerPrefs.SetString("PlayerName", PlayerNameLabel.text);
 			return PlayerNameLabel.text;
 		}
 	}

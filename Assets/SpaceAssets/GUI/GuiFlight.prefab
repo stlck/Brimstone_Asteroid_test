@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96666f2fd61b8c4f8f246ecb073429a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName: {fileID: 11400024}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,7 +623,7 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 1
-  mAtlas: {fileID: 11400000, guid: dae6115d975cfdc48bc4da2d62530be4, type: 2}
+  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
   mSpriteName: Box filling
   mFillCenter: 1
   mType: 0
@@ -643,7 +644,7 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 1
-  mAtlas: {fileID: 11400000, guid: dae6115d975cfdc48bc4da2d62530be4, type: 2}
+  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
   mSpriteName: Box filling
   mFillCenter: 1
   mType: 0
@@ -701,7 +702,7 @@ MonoBehaviour:
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
-  mEffectStyle: 0
+  mEffectStyle: 2
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}

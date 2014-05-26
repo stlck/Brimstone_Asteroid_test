@@ -7,12 +7,7 @@ public class GUIFlight : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	}
 
-	void OnLevelWasLoaded(int level)
-	{
-		playerObject = SpacePlayerObject.Instance;
-		playerObject.SpawnShip ();
 	}
 	
 	// Update is called once per frame
