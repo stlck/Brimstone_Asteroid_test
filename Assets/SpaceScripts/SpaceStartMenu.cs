@@ -20,8 +20,8 @@ public class SpaceStartMenu : MonoBehaviour {
 	{
 		Debug.Log ("Start");
 
-		MasterServer.RegisterHost ("AsteroidsSpaceTest", "test1234");
-		Network.InitializeServer (4, 7007, !Network.useProxy);
+        Network.InitializeServer(4, 7007, !Network.useProxy);
+        MasterServer.RegisterHost("AsteroidsSpaceTest", "test1234");
 		Application.LoadLevel ("SpaceCommandMenu");
 	}
 

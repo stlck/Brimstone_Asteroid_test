@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class SpaceGameManager : MonoBehaviour {
 
 	public SpacePlayerObject PlayerTemplate;
 	public List<SpacePlayerObject> PlayerObjects = new List<SpacePlayerObject>();
+    public SpaceGameVariables GameVariables;
 
 	// Use this for initialization
 	void Start () {
@@ -27,4 +29,19 @@ public class SpaceGameManager : MonoBehaviour {
 	void OnPlayerConnected(NetworkPlayer player) {
 		Debug.Log("Player " + Network.connections.Length + " connected from " + player.ipAddress + ":" + player.port);
 	}
+
+    [RPC]
+    public void SetCash(int amount)
+    {
+        GameVariables.Cash = amount;
+    }
+}
+
+[Serializable]
+public class SpaceGameVariables
+{
+    public string GameName;
+    public int Cash;
+    public List<int> OwnedShips;
+    public List<int> OwnedWeapons;
 }

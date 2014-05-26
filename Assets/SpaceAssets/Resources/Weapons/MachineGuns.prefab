@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: MachineGuns
   m_TagString: Untagged
@@ -40,6 +41,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ammonition: {fileID: 11400000, guid: 4ec31ded2b1947f499b5be275018aea7, type: 2}
   ShotCooldown: .300000012
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd425966263647468e0bff0c6dfcb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1
+  ItemType: 1
+  Name: Machine Gun
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
