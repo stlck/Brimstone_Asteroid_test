@@ -42,4 +42,10 @@ public class ShipControlTranslate : MonoBehaviour {
 		transform.position = pos;
 		transform.eulerAngles = rot;
 	}
+
+    [RPC]
+    void SetOwner(NetworkPlayer o)
+    {
+        this.owner = o;
+    }
 }

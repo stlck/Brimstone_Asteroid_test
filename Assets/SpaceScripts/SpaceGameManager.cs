@@ -76,9 +76,9 @@ public class SpaceGameManager : MonoBehaviour {
             GameVariables.PlayersInGame.Add(new SpaceGamePlayer() { Player = player, Name = player.ipAddress });
         else
             GameVariables.PlayersInGame.First(m => m.Player == player).Name = name;
-
     }
 
+    
     [RPC]
     public void SetCash(int amount)
     {

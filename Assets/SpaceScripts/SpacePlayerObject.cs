@@ -42,6 +42,7 @@ public class SpacePlayerObject : MonoBehaviour {
 			spawnedShip = Network.Instantiate(ShipObject, Vector3.zero, ShipObject.transform.rotation, 0) as ShipControlTranslate;
 
 		spawnedShip.owner = Network.player;
+        spawnedShip.networkView.RPC("SetOwner", RPCMode.Others, spawnedShip.owner);
 
 		var weapon = Instantiate (WeaponObject, spawnedShip.transform.position, Quaternion.identity) as WeaponControl;
 		weapon.transform.parent = spawnedShip.transform;
@@ -50,9 +51,5 @@ public class SpacePlayerObject : MonoBehaviour {
 		Camera.main.gameObject.AddComponent<CameraFollow> ().target = spawnedShip.transform;
 	}
 
-    //[RPC]
-    //void SetOwner(NetworkPlayer owner)
-    //{
-    //    Owner = owner;
-    //}
+
 }
