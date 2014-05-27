@@ -6,6 +6,8 @@ using System.Linq;
 public class GUICommand : MonoBehaviour {
 
 	public List<UISlideTrigger> PanelTriggers = new List<UISlideTrigger>();
+	public SpaceScriptStorage StorageUnit;
+
 	UISlideTrigger current;
 	SpacePlayerObject playerObject;
 

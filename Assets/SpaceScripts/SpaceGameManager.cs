@@ -20,6 +20,7 @@ public class SpaceGameManager : MonoBehaviour {
     public UIRoot GuiCommand;
     public UIRoot GuiFlight;
 
+
     struct SpaceGameVariables
     {
         public int Cash;
