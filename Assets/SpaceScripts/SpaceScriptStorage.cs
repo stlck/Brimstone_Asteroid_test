@@ -9,15 +9,6 @@ public class SpaceScriptStorage : ScriptableObject {
     
     public List<ShipControlTranslate> GetUIShipList()
     {
-        //var ret = new List<UIShip>();
-
-        //foreach(var s in ShipList)
-        //{
-        //    var newShipPanel = new UIShip() { Ship = s };
-        //    newShipPanel.Panel = n
-        //    ret.Add();
-        //}
-
         return ShipList;
     }
 }

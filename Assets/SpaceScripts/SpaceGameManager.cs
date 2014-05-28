@@ -16,19 +16,18 @@ public class SpaceGameManager : MonoBehaviour {
 
     //public SpacePlayerObject PlayerTemplate;
     public SpacePlayerObject PlayerObject = new SpacePlayerObject();
-    SpaceGameVariables GameVariables = new SpaceGameVariables();
+    public SpaceGameVariables GameVariables = new SpaceGameVariables();
     public UIRoot GuiCommand;
     public UIRoot GuiFlight;
 
-
-    struct SpaceGameVariables
+	public class SpaceGameVariables
     {
         public int Cash;
-        public List<SpaceNetworkItem> OwnedShips;
-        public List<SpaceGamePlayer> PlayersInGame;
+        public List<ShipControlTranslate> OwnedShips = new List<ShipControlTranslate>();
+        public List<SpaceGamePlayer> PlayersInGame = new List<SpaceGamePlayer>();
     }
 
-    class SpaceGamePlayer
+	public class SpaceGamePlayer
     {
         public NetworkPlayer Player;
         public string Name;

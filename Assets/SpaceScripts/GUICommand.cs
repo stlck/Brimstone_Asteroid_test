@@ -5,9 +5,8 @@ using System.Linq;
 
 public class GUICommand : MonoBehaviour {
 
-	public List<UISlideTrigger> PanelTriggers = new List<UISlideTrigger>();
 	public SpaceScriptStorage StorageUnit;
-    public UIPanel MarketShips;
+    public UIGrid MarketShips;
 
 	UISlideTrigger current;
 	SpacePlayerObject playerObject;
@@ -15,43 +14,19 @@ public class GUICommand : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		playerObject = SpacePlayerObject.Instance;
+			playerObject = SpacePlayerObject.Instance;
 
-		foreach(var p in PanelTriggers)
-		    UIEventListener.Get(p.TriggerButton).onClick += TriggerClicked;
-	}
-
-	public void TriggerClicked(GameObject go)
-	{
-		Debug.Log (go + " trigger");
-		if (current != null)
-			current.Slide (false);
-
-		if(PanelTriggers.Any( m => m.TriggerButton == go)){
-
-			current = PanelTriggers.First (m => m.TriggerButton == go);
-			current.Slide(true);
 		}
-	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
-	public void SlideClose()
-	{
-		if (current != null)
-			current.Slide (false);
-		current = null;
-	}
 
 	public void DepartPressed()
 	{
         SpaceGameManager.Instance.LaunchMission();
-        //SpaceGameManager.Instance.networkView.RPC("", RPCMode.Server, "SpaceFlightScene");
-
-        //Application.LoadLevel ("SpaceFlightScene");
 	}
 
 	public void ShipSelected(string ship)
@@ -69,21 +44,14 @@ public class GUICommand : MonoBehaviour {
     public void ShowShipList()
     {
         var shipPanel = StorageUnit.ShipMarketTemplate;
-        var y = 0;
+        
         foreach (var s in StorageUnit.ShipList)
         {
-            var p = Instantiate(shipPanel) as UIPanel;
-            
-            p.GetComponent<UIMarketShipControl>().SetShip(s);
-            p.transform.parent = MarketShips.transform;
-            p.transform.localScale = Vector3.one;
-            p.transform.position = Vector3.zero;
-            //var label = NGUITools.AddWidget<UILabel>(MarketShips.gameObject);
-            
-            //label.text = s.name;
-            //var btn = NGUITools.AddWidget<UIButton>(MarketShips.gameObject);
-            
-            //MarketShips.AddWidget<UILabel>();
+			var sp = NGUITools.AddChild(MarketShips.gameObject, shipPanel.gameObject);
+			var ship = sp.GetComponent<UIMarketShipControl>();
+			ship.SetShip(this, s);
+			ship.OnShipBought += (ShipControlTranslate m) => SpaceGameManager.Instance.GameVariables.OwnedShips.Add(m);
         }
+		MarketShips.repositionNow = true;
     }
 }
