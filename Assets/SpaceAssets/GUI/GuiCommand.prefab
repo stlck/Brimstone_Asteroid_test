@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400030}
   - 114: {fileID: 11400074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400046}
   - 114: {fileID: 11400076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   - 114: {fileID: 11400072}
   - 114: {fileID: 11400070}
   - 114: {fileID: 11400046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Popup List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400102}
   - 114: {fileID: 11400124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400118}
   - 114: {fileID: 11400126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,24 +1039,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400120}
   - 114: {fileID: 11400148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TopAnchor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100122
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400122}
-  - 114: {fileID: 11400150}
-  m_Layer: 0
-  m_Name: Market_Ships_Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,7 +1098,7 @@ Transform:
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.00416666688, y: 6.28369427, z: 0}
-  m_LocalScale: {x: .00312012481, y: .00312012481, z: .00312012481}
+  m_LocalScale: {x: .00224719103, y: .00224719103, z: .00224719103}
   m_Children:
   - {fileID: 400038}
   - {fileID: 400052}
@@ -1238,7 +1222,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .499804944, y: -320.5, z: 0}
+  m_LocalPosition: {x: -.5, y: -445, z: 0}
   m_LocalScale: {x: 1.00014007, y: 1.00014007, z: 1.00014007}
   m_Children:
   - {fileID: 400000}
@@ -1805,22 +1789,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .499804944, y: 295.500061, z: 0}
+  m_LocalPosition: {x: -.5, y: 419.999908, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400118}
   m_Father: {fileID: 400004}
---- !u!4 &400122
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.52859497e-05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 320.5}
-  m_Children: []
-  m_Father: {fileID: 400124}
 --- !u!4 &400124
 Transform:
   m_ObjectHideFlags: 1
@@ -1830,8 +1803,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400122}
+  m_Children: []
   m_Father: {fileID: 400004}
 --- !u!20 &2000000
 Camera:
@@ -1849,8 +1821,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -2
-  far clip plane: 2
+  near clip plane: -4
+  far clip plane: 4
   field of view: 60
   orthographic: 1
   orthographic size: 1
@@ -2102,17 +2074,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.455109
+    e00: 444.937683
     e01: 0
     e02: 0
-    e03: .835494816
+    e03: 2.35383701
     e10: 0
-    e11: 320.455109
+    e11: 444.937683
     e12: 0
-    e13: -1718.18689
+    e13: -2375.91455
     e20: 0
     e21: 0
-    e22: 320.455109
+    e22: 444.937683
     e23: 0
     e30: 0
     e31: 0
@@ -2261,17 +2233,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: 1248.1687
+    e03: 1248.6875
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2788.18311
+    e13: -3570.50293
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: 0
     e30: 0
     e31: 0
@@ -2358,17 +2330,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.455109
+    e00: 444.937683
     e01: 0
     e02: 0
-    e03: 881.711914
+    e03: 882.230591
     e10: 0
-    e11: 320.455109
+    e11: 444.937683
     e12: 0
-    e13: -2787.29272
+    e13: -3569.50293
     e20: 0
     e21: 0
-    e22: 320.455109
+    e22: 444.937683
     e23: 0
     e30: 0
     e31: 0
@@ -2397,17 +2369,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: 982.998413
+    e03: 983.517212
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2041.73523
+    e13: -2824.05518
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: -.251854599
     e30: 0
     e31: 0
@@ -2894,17 +2866,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: 1323.25952
+    e03: 1323.7782
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2041.73523
+    e13: -2824.05518
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: -.251854599
     e30: 0
     e31: 0
@@ -3476,17 +3448,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: .83561182
+    e03: 2.35416675
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2309.42407
+    e13: -3216.2439
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: 0
     e30: 0
     e31: 0
@@ -3515,17 +3487,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: 1.33541679
+    e03: 1.85416675
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2013.92407
+    e13: -2796.2439
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: 0
     e30: 0
     e31: 0
@@ -3745,24 +3717,6 @@ MonoBehaviour:
   runOnlyOnce: 0
   relativeOffset: {x: 0, y: 0}
   pixelOffset: {x: 0, y: -25}
---- !u!114 &11400150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ca9c6e5cbd4544ab22016a27d817a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  columns: 2
-  direction: 0
-  padding: {x: 0, y: 0}
-  sorted: 0
-  hideInactive: 1
-  repositionNow: 0
-  keepWithinPanel: 1
 --- !u!114 &11400152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3863,17 +3817,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 445
     e01: 0
     e02: 0
-    e03: 1.33541679
+    e03: 1.85416675
     e10: 0
-    e11: 320.5
+    e11: 445
     e12: 0
-    e13: -2013.92407
+    e13: -2796.2439
     e20: 0
     e21: 0
-    e22: 320.5
+    e22: 445
     e23: 0
     e30: 0
     e31: 0
@@ -3990,6 +3944,7 @@ MonoBehaviour:
   - {fileID: 11400100}
   - {fileID: 11400102}
   StorageUnit: {fileID: 11400000, guid: 42edd38a1d48daa468ada67048c58731, type: 2}
+  MarketShips: {fileID: 0}
 --- !u!114 &11400184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4155,17 +4110,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.455109
+    e00: 444.937683
     e01: 0
     e02: 0
-    e03: 515.431885
+    e03: 515.950562
     e10: 0
-    e11: 320.455109
+    e11: 444.937683
     e12: 0
-    e13: -2787.79272
+    e13: -3570.00293
     e20: 0
     e21: 0
-    e22: 320.455109
+    e22: 444.937683
     e23: 0
     e30: 0
     e31: 0

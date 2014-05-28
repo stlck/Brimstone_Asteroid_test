@@ -7,6 +7,7 @@ public class GUICommand : MonoBehaviour {
 
 	public List<UISlideTrigger> PanelTriggers = new List<UISlideTrigger>();
 	public SpaceScriptStorage StorageUnit;
+    public UIPanel MarketShips;
 
 	UISlideTrigger current;
 	SpacePlayerObject playerObject;
@@ -64,4 +65,25 @@ public class GUICommand : MonoBehaviour {
 		if(playerObject != null)
 			playerObject.WeaponObject = Resources.Load<WeaponControl> ("Weapons/" + weapon);
 	}
+
+    public void ShowShipList()
+    {
+        var shipPanel = StorageUnit.ShipMarketTemplate;
+        var y = 0;
+        foreach (var s in StorageUnit.ShipList)
+        {
+            var p = Instantiate(shipPanel) as UIPanel;
+            
+            p.GetComponent<UIMarketShipControl>().SetShip(s);
+            p.transform.parent = MarketShips.transform;
+            p.transform.localScale = Vector3.one;
+            p.transform.position = Vector3.zero;
+            //var label = NGUITools.AddWidget<UILabel>(MarketShips.gameObject);
+            
+            //label.text = s.name;
+            //var btn = NGUITools.AddWidget<UIButton>(MarketShips.gameObject);
+            
+            //MarketShips.AddWidget<UILabel>();
+        }
+    }
 }

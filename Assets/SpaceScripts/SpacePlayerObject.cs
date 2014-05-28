@@ -47,7 +47,7 @@ public class SpacePlayerObject : MonoBehaviour {
 		var weapon = Instantiate (WeaponObject, spawnedShip.transform.position, Quaternion.identity) as WeaponControl;
 		weapon.transform.parent = spawnedShip.transform;
 		weapon.transform.rotation = Quaternion.identity;
-
+        
 		Camera.main.gameObject.AddComponent<CameraFollow> ().target = spawnedShip.transform;
 	}
 
