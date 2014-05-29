@@ -20,6 +20,7 @@ public class SpaceGameManager : MonoBehaviour {
     public UIRoot GuiCommand;
     public UIRoot GuiFlight;
 
+	[Serializable]
 	public class SpaceGameVariables
     {
         public int Cash;
@@ -27,23 +28,25 @@ public class SpaceGameManager : MonoBehaviour {
         public List<SpaceGamePlayer> PlayersInGame = new List<SpaceGamePlayer>();
     }
 
+	[Serializable]
 	public class SpaceGamePlayer
     {
         public NetworkPlayer Player;
         public string Name;
     }
 
+	void Awake()
+	{
+		if (_instance == null)
+			_instance = this;
+		else
+			Destroy(gameObject);
+		
+		DontDestroyOnLoad (gameObject);
+	}
+
 	// Use this for initialization
 	void Start () {
-        if (_instance == null)
-            _instance = this;
-        else
-            Destroy(gameObject);
-
-		DontDestroyOnLoad (gameObject);
-
-        GameVariables.PlayersInGame = new List<SpaceGamePlayer>();
-
         if (Network.isServer)
             SetPlayer(Network.player, "Server");
 	}

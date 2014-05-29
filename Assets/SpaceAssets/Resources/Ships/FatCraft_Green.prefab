@@ -350,8 +350,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843bb4ef4bb3788438ec9ea104b9beda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  StrafeSpeed: 1.5
+  ShipAttributes:
+    Name: Green
+    Speed: 2.41000009
+    SpeedStrafe: 1
+    SpeedRotate: 2
+    Shield: 166
+    Armor: 179
+    Price: 100
+    Weapons: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

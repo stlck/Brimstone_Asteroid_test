@@ -5,6 +5,9 @@ public class UISlideTrigger : MonoBehaviour {
 
 	public GameObject TriggerButton;
 	public bool State = false;
+
+	public delegate void OnSlide(bool state);
+	public event OnSlide OnSlideEvent;
 	Animator _anim;
 
 	void Start()
@@ -16,5 +19,8 @@ public class UISlideTrigger : MonoBehaviour {
 	{
 		State = state;
 		_anim.SetBool ("Slide", State);
+
+		if (OnSlideEvent != null)
+			OnSlideEvent (state);
 	}
 }

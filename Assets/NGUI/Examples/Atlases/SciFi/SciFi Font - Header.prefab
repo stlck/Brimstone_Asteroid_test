@@ -50,7 +50,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: .5
-    height: 1
+    height: .5
   mFont:
     mSize: 28
     mBase: 21

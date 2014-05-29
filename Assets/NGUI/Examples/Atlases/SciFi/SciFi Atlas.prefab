@@ -217,17 +217,17 @@ MonoBehaviour:
       height: 15
     inner:
       serializedVersion: 2
-      x: 397
-      y: 1013
-      width: 20
-      height: 7
+      x: 396
+      y: 1012
+      width: 22
+      height: 9
     rotated: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
   mCoordinates: 0
-  mPixelSize: .5
+  mPixelSize: 1
   mReplacement: {fileID: 0}
 --- !u!1002 &11400001
 EditorExtensionImpl:

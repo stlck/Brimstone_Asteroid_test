@@ -187,18 +187,18 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320.5
+    e00: 1
     e01: 0
     e02: 0
-    e03: 89.7735977
+    e03: -.14952676
     e10: 0
-    e11: 320.5
+    e11: 1
     e12: 0
-    e13: -2164.54541
+    e13: -1.4131912
     e20: 0
     e21: 0
-    e22: 320.5
-    e23: 0
+    e22: 1
+    e23: .108912349
     e30: 0
     e31: 0
     e32: 0
@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: {fileID: 11400004}
-  Owner: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,7 +285,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 2
   mFont: {fileID: 11400000, guid: 1059e46045628c0489e4e9c251358758, type: 2}
-  mText: Button
+  mText: BUY
   mMaxLineWidth: 0
   mMaxLineHeight: 0
   mEncoding: 1

@@ -6,11 +6,8 @@ public class SpaceScriptStorage : ScriptableObject {
 
 	public List<ShipControlTranslate> ShipList = new List<ShipControlTranslate>();
 	public UIPanel ShipMarketTemplate;
-    
-    public List<ShipControlTranslate> GetUIShipList()
-    {
-        return ShipList;
-    }
+
+	public List<WeaponControl> WeaponList = new List<WeaponControl>();
 }
 
 public class UIShip

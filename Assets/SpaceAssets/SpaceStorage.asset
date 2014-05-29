@@ -16,3 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a180e4ac9d5a8843b7218c22c3c9bb4, type: 2}
   - {fileID: 11400000, guid: a2a5e29a31dac684fb2081ec5395955b, type: 2}
   ShipMarketTemplate: {fileID: 11400000, guid: c5ffeb1e4c6d3384ba5a3ca7d7313161, type: 2}
+  WeaponList:
+  - {fileID: 11400000, guid: 8be3820ccd4576d4b8f01b0f4dcefc47, type: 2}
+  - {fileID: 11400000, guid: 06086be4a41b2f84daedf60347f08db3, type: 2}

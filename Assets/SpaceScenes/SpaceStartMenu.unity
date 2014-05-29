@@ -382,6 +382,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400046, guid: 378675aa2cdadd44e89c758def16e396, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .00416666688
+      objectReference: {fileID: 0}
+    - target: {fileID: 400046, guid: 378675aa2cdadd44e89c758def16e396, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00416666688
+      objectReference: {fileID: 0}
+    - target: {fileID: 400046, guid: 378675aa2cdadd44e89c758def16e396, type: 2}
+      propertyPath: m_LocalScale.z
+      value: .00416666688
+      objectReference: {fileID: 0}
+    - target: {fileID: 400042, guid: 378675aa2cdadd44e89c758def16e396, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .500115156
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 378675aa2cdadd44e89c758def16e396, type: 2}
   m_RootGameObject: {fileID: 985496869}
@@ -2285,7 +2301,7 @@ Transform:
   m_GameObject: {fileID: 985496869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8.9978199, z: 0}
-  m_LocalScale: {x: .00335008372, y: .00335008372, z: .00335008372}
+  m_LocalScale: {x: .00416666688, y: .00416666688, z: .00416666688}
   m_Children:
   - {fileID: 279858796}
   m_Father: {fileID: 0}
@@ -2499,17 +2515,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 298.5
+    e00: 239.999985
     e01: 0
     e02: 0
     e03: .5
     e10: 0
-    e11: 298.5
+    e11: 239.999985
     e12: 0
-    e13: -2687.84937
+    e13: -2161.97681
     e20: 0
     e21: 0
-    e22: 298.5
+    e22: 239.999985
     e23: 0
     e30: 0
     e31: 0
@@ -3108,7 +3124,7 @@ Transform:
   m_PrefabInternal: {fileID: 281706416}
   m_GameObject: {fileID: 1772294352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.5, y: -8.58306885e-05, z: 0}
+  m_LocalPosition: {x: -.5, y: .500115156, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1187294836}
