@@ -378,6 +378,7 @@ GameObject:
   - 95: {fileID: 9500002}
   - 114: {fileID: 11400102}
   - 114: {fileID: 11400316}
+  - 114: {fileID: 11400314}
   m_Layer: 8
   m_Name: HangarPanel
   m_TagString: Untagged
@@ -1651,7 +1652,7 @@ Transform:
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.00416666688, y: 6.28369427, z: 0}
-  m_LocalScale: {x: .00416666688, y: .00416666688, z: .00416666688}
+  m_LocalScale: {x: .0031397175, y: .0031397175, z: .0031397175}
   m_Children:
   - {fileID: 400038}
   - {fileID: 400144}
@@ -1779,7 +1780,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.11758702e-07, y: -239.999985, z: 0}
+  m_LocalPosition: {x: -.500196517, y: -318.5, z: 0}
   m_LocalScale: {x: 1.00014007, y: 1.00014007, z: 1.00014007}
   m_Children:
   - {fileID: 400000}
@@ -2353,7 +2354,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.11758702e-07, y: 215.000031, z: 0}
+  m_LocalPosition: {x: -.500196517, y: 293.499939, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400118}
@@ -3105,17 +3106,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.96637
+    e00: 318.455383
     e01: 0
     e02: 0
-    e03: .999860048
+    e03: 1.82702398
     e10: 0
-    e11: 239.96637
+    e11: 318.455383
     e12: 0
-    e13: -1292.90894
+    e13: -1707.62085
     e20: 0
     e21: 0
-    e22: 239.96637
+    e22: 318.455383
     e23: 0
     e30: 0
     e31: 0
@@ -3261,17 +3262,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1247.83337
+    e03: 1248.1604
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -2282.3457
+    e13: -2775.61572
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -3358,17 +3359,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.96637
+    e00: 318.455383
     e01: 0
     e02: 0
-    e03: 881.376587
+    e03: 881.703613
     e10: 0
-    e11: 239.96637
+    e11: 318.455383
     e12: 0
-    e13: -2281.52612
+    e13: -2774.72705
     e20: 0
     e21: 0
-    e22: 239.96637
+    e22: 318.455383
     e23: 0
     e30: 0
     e31: 0
@@ -3397,17 +3398,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 982.663025
+    e03: 982.990112
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1535.89771
+    e13: -2029.16772
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: -.251854599
     e30: 0
     e31: 0
@@ -3894,17 +3895,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1571.02563
+    e03: 1571.35266
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1535.89771
+    e13: -2029.16772
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: -.251854599
     e30: 0
     e31: 0
@@ -4476,17 +4477,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1.00000012
+    e03: 1.82727981
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1723.08655
+    e13: -2294.85645
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -4515,17 +4516,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1
+    e03: 1.32708335
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1508.08655
+    e13: -2001.35657
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -4863,17 +4864,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1.00010669
+    e03: 1.32719004
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1950.69629
+    e13: -2443.96631
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -5097,17 +5098,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1.00010669
+    e03: 1.32719004
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1950.69629
+    e13: -2443.96631
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -5268,17 +5269,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.96637
+    e00: 318.455383
     e01: 0
     e02: 0
-    e03: 515.096558
+    e03: 515.423584
     e10: 0
-    e11: 239.96637
+    e11: 318.455383
     e12: 0
-    e13: -2282.02612
+    e13: -2775.22705
     e20: 0
     e21: 0
-    e22: 239.96637
+    e22: 318.455383
     e23: 0
     e30: 0
     e31: 0
@@ -5541,17 +5542,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1.00010669
+    e03: 1.32719004
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1950.69629
+    e13: -2443.96631
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -5667,17 +5668,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: 1.00010669
+    e03: 1.32719004
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1950.69629
+    e13: -2443.96631
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -5920,17 +5921,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 239.999985
+    e00: 318.5
     e01: 0
     e02: 0
-    e03: -345.539398
+    e03: -345.212311
     e10: 0
-    e11: 239.999985
+    e11: 318.5
     e12: 0
-    e13: -1967.85168
+    e13: -2461.12158
     e20: 0
     e21: 0
-    e22: 239.999985
+    e22: 318.5
     e23: 0
     e30: 0
     e31: 0
@@ -6369,6 +6370,19 @@ MonoBehaviour:
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
+--- !u!114 &11400314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070b870032e6f674ba049dbc813145f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerButton: {fileID: 100190}
+  State: 0
 --- !u!114 &11400316
 MonoBehaviour:
   m_ObjectHideFlags: 1

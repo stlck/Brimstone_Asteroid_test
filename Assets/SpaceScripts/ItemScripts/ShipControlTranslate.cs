@@ -25,8 +25,8 @@ public class ShipControlTranslate : MonoBehaviour {
 			var horizontalInput = Input.GetAxis ("Horizontal") * Time.deltaTime;
 			var verticalInput = Input.GetAxis ("Vertical") * Time.deltaTime;
 
-			transform.Translate (Vector3.right * horizontalInput * ShipAttributes.Speed);
-			transform.Translate (Vector3.forward * verticalInput * ShipAttributes.SpeedStrafe);
+			transform.Translate (Vector3.right * horizontalInput * ShipAttributes.SpeedStrafe);
+			transform.Translate (Vector3.forward * verticalInput * ShipAttributes.Speed);
 
 			var pos = transform.position;
 			pos.z = 0;

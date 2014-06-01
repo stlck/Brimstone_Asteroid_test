@@ -51,6 +51,6 @@ public class UIHangarPanel : MonoBehaviour {
 
 	public void ShipSelect(GameObject go)
 	{
-		SpacePlayerObject.Instance.ShipObject = go.GetComponent<ShipControlTranslate> ();//Resources.Load<ShipControlTranslate> ("Ships/" + ship);
+		SpacePlayerObject.Instance.ShipObject = CurrentShip;//go.GetComponent<ShipControlTranslate> ();//Resources.Load<ShipControlTranslate> ("Ships/" + ship);
 	}
 }

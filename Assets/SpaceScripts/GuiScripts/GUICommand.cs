@@ -5,7 +5,6 @@ using System.Linq;
 
 public class GUICommand : MonoBehaviour {
 
-
 	UISlideTrigger current;
 	SpacePlayerObject playerObject;
 

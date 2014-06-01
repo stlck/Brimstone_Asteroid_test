@@ -19,7 +19,8 @@ public class SpaceGameManager : MonoBehaviour {
     public SpaceGameVariables GameVariables = new SpaceGameVariables();
     public UIRoot GuiCommand;
     public UIRoot GuiFlight;
-
+	public SpaceScriptStorage StorageUnit;
+	
 	[Serializable]
 	public class SpaceGameVariables
     {
@@ -61,6 +62,26 @@ public class SpaceGameManager : MonoBehaviour {
         //var PO = Network.Instantiate (PlayerTemplate, Vector3.zero, Quaternion.identity, 0) as SpacePlayerObject;
         //PO.Owner = Network.player;
         //PO.networkView.RPC ("SetOwner", RPCMode.OthersBuffered, Network.player);
+	}
+
+	void OnLevelWasLoaded(int i)
+	{
+		if (Network.isServer)
+			GameVariables.Cash = 200;
+	}
+
+	public void BuyShip(ShipControlTranslate s)
+	{
+		if (GameVariables.Cash > s.ShipAttributes.Price) {
+			GameVariables.Cash -= s.ShipAttributes.Price;
+			networkView.RPC ("BuyShipNetworked", RPCMode.All, s.name); 
+		}
+	}
+
+	[RPC]
+	public void BuyShipNetworked(string name)
+	{
+		GameVariables.OwnedShips.Add (StorageUnit.GetShipByName(name));		
 	}
 
 	void OnPlayerConnected(NetworkPlayer player) {

@@ -23,7 +23,10 @@ public class UIMarketScript : MonoBehaviour {
 			var sp = NGUITools.AddChild(MarketShips.gameObject, shipPanel.gameObject);
 			var ship = sp.GetComponent<UIMarketShipControl>();
 			ship.SetShip( s);
-			ship.OnShipBought += (ShipControlTranslate m) => SpaceGameManager.Instance.GameVariables.OwnedShips.Add(m);
+			ship.OnShipBought += (ShipControlTranslate m) => 
+			(
+					SpaceGameManager.Instance.BuyShip(m)
+			);
 		}
 		MarketShips.repositionNow = true;
 	}
