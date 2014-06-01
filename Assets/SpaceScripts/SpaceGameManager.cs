@@ -34,6 +34,7 @@ public class SpaceGameManager : MonoBehaviour {
     {
         public NetworkPlayer Player;
         public string Name;
+		public string CurrentMission;
     }
 
 	void Awake()
@@ -102,6 +103,20 @@ public class SpaceGameManager : MonoBehaviour {
             GameVariables.PlayersInGame.First(m => m.Player == player).Name = name;
     }
 
+	public void AddCash(int amount)
+	{
+		if (Network.peerType == NetworkPeerType.Server)
+			AddCashNetworked (amount);
+		else
+			networkView.RPC ("AddCashNetworked", RPCMode.Server, amount);
+	}
+
+	[RPC]
+	public void AddCashNetworked(int amount)
+	{
+		GameVariables.Cash += amount;
+		networkView.RPC ("SetCash", RPCMode.Others, GameVariables.Cash);
+	}
     
     [RPC]
     public void SetCash(int amount)

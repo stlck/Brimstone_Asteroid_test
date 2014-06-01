@@ -16,10 +16,12 @@ public class SpaceScriptStorage : ScriptableObject {
 	}
 
 	public List<WeaponControl> WeaponList = new List<WeaponControl>();
+
+	public List<MissionControl> MissionList = new List<MissionControl>();
 }
 
-public class UIShip
+/*public class UIShip
 {
     public ShipControlTranslate Ship;
     public UIPanel Panel;
-}
+}*/
