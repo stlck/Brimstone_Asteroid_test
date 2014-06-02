@@ -17,8 +17,8 @@ public class SpaceGameManager : MonoBehaviour {
     //public SpacePlayerObject PlayerTemplate;
     public SpacePlayerObject PlayerObject = new SpacePlayerObject();
     public SpaceGameVariables GameVariables = new SpaceGameVariables();
-    public UIRoot GuiCommand;
-    public UIRoot GuiFlight;
+    public GUICommand GuiCommand;
+    public GUIFlight GuiFlight;
 	public SpaceScriptStorage StorageUnit;
 	
 	[Serializable]
@@ -35,6 +35,7 @@ public class SpaceGameManager : MonoBehaviour {
         public NetworkPlayer Player;
         public string Name;
 		public string CurrentMission;
+		public bool InFlight;
     }
 
 	void Awake()
@@ -50,7 +51,7 @@ public class SpaceGameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if (Network.isServer)
-            SetPlayer(Network.player, "Server");
+            SetPlayer(Network.player, "Server", "", false);
 	}
 	
 	// Update is called once per frame
@@ -68,13 +69,14 @@ public class SpaceGameManager : MonoBehaviour {
 	void OnLevelWasLoaded(int i)
 	{
 		if (Network.isServer)
-			GameVariables.Cash = 200;
+			AddCash( 200);
 	}
 
 	public void BuyShip(ShipControlTranslate s)
 	{
-		if (GameVariables.Cash > s.ShipAttributes.Price) {
-			GameVariables.Cash -= s.ShipAttributes.Price;
+		if (GameVariables.Cash >= s.ShipAttributes.Price) {
+			AddCash(- s.ShipAttributes.Price);
+			//GameVariables.Cash -= s.ShipAttributes.Price;
 			networkView.RPC ("BuyShipNetworked", RPCMode.All, s.name); 
 		}
 	}
@@ -91,17 +93,27 @@ public class SpaceGameManager : MonoBehaviour {
         GameVariables.PlayersInGame.Add(new SpaceGamePlayer() { Player = player,  Name = "Client " + Network.connections });
 
         foreach (var p in GameVariables.PlayersInGame)
-            networkView.RPC("SetPlayer", RPCMode.Others, p.Player, p.Name);
+            networkView.RPC("SetPlayer", RPCMode.Others, p.Player, p.Name, "", false);
 	}
 
     [RPC]
-    public void SetPlayer(NetworkPlayer player, string name)
+	public void SetPlayer(NetworkPlayer player, string name, string mission, bool inflight)
     {
-        if (!GameVariables.PlayersInGame.Any(m => m.Player != null && m.Player == player))
-            GameVariables.PlayersInGame.Add(new SpaceGamePlayer() { Player = player, Name = player.ipAddress });
-        else
-            GameVariables.PlayersInGame.First(m => m.Player == player).Name = name;
+        if (!GameVariables.PlayersInGame.Any (m => m.Player != null && m.Player == player))
+			GameVariables.PlayersInGame.Add (new SpaceGamePlayer () { Player = player, Name = player.ipAddress, CurrentMission = "", InFlight = false });
+		else {
+			var p = GameVariables.PlayersInGame.First (m => m.Player == player);//.Name = name;
+			p.Name = name;
+			p.CurrentMission = mission;
+			p.InFlight = inflight;
+		}
     }
+
+	public void MissionCompleted(MissionObject misison)
+	{
+		SpaceGameManager.Instance.AddCash (misison.CashReward);
+		
+	}
 
 	public void AddCash(int amount)
 	{
@@ -115,13 +127,14 @@ public class SpaceGameManager : MonoBehaviour {
 	public void AddCashNetworked(int amount)
 	{
 		GameVariables.Cash += amount;
-		networkView.RPC ("SetCash", RPCMode.Others, GameVariables.Cash);
+		networkView.RPC ("SetCash", RPCMode.All, GameVariables.Cash);
 	}
     
     [RPC]
     public void SetCash(int amount)
     {
         GameVariables.Cash = amount;
+		GuiCommand.SetCashLabel ("$$ " + amount);
     }
 
     public void LaunchMission()

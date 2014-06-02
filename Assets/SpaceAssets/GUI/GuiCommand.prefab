@@ -4558,6 +4558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d6d51e14e9c034b96ffee2b93fc05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashLabel: {fileID: 11400124}
 --- !u!114 &11400186
 MonoBehaviour:
   m_ObjectHideFlags: 1

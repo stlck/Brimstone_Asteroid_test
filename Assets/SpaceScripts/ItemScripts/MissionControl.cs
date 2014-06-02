@@ -16,8 +16,11 @@ public class MissionControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Completed () {
-		SpaceGameManager.Instance.AddCash (MissionObject.CashReward);
-		Destroy (gameObject);
+		SpaceGameManager.Instance.MissionCompleted (MissionObject);//.AddCash (MissionObject.CashReward);
+		if (Network.peerType == NetworkPeerType.Disconnected)
+			Destroy (gameObject);
+		else
+			Network.Destroy (gameObject);
 	}
 }
 
@@ -26,7 +29,7 @@ public class MissionObject
 {
 	public string Name;
 	public MissionType Type;
-	public Vector2 Location;
+	public Vector3 Location;
 	public bool ActivateComponents = true;
 
 	public int CashReward;

@@ -5,13 +5,14 @@ using System.Linq;
 
 public class GUICommand : MonoBehaviour {
 
+	public UILabel CashLabel;
 	UISlideTrigger current;
 	SpacePlayerObject playerObject;
 
 	// Use this for initialization
 	void Start () {
 			playerObject = SpacePlayerObject.Instance;
-		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,4 +36,9 @@ public class GUICommand : MonoBehaviour {
 			playerObject.WeaponObject = Resources.Load<WeaponControl> ("Weapons/" + weapon);
 	}
 
+	public void SetCashLabel(string text)
+	{
+		CashLabel.text = text;
+
+	}
 }

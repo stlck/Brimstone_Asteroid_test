@@ -13,8 +13,13 @@ public class CreateMissionTargets : MonoBehaviour {
 	void Start () {
 		Mission = GetComponent<MissionControl> ();
 
-		foreach (var t in Targets)
-			instantiatedTargets.Add (Instantiate (t) as Transform);
+		foreach (var t in Targets) {
+			if(Network.peerType == NetworkPeerType.Disconnected)
+				instantiatedTargets.Add (Instantiate (t, Mission.MissionObject.Location + t.position, t.rotation) as Transform);
+			else{
+				instantiatedTargets.Add( Network.Instantiate(t, Mission.MissionObject.Location + t.position, t.rotation, 1) as Transform);
+			}
+		}
 
 	}
 	
